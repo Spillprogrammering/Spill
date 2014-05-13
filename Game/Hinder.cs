@@ -8,6 +8,15 @@ namespace Game
 {
     class Hinder
     {
-        private int x;
+        private int x { get; set; }
+        private int y { get; set; }
+
+        public Hinder(int _x, int _y)
+        {
+
+        }
+   
+
+
     }
 }

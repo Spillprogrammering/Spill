@@ -56,9 +56,9 @@
             // tlpToppPanel
             // 
             this.tlpToppPanel.ColumnCount = 3;
-            this.tlpToppPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpToppPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpToppPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
+            this.tlpToppPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.16636F));
+            this.tlpToppPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.83364F));
+            this.tlpToppPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 263F));
             this.tlpToppPanel.Controls.Add(this.lblPoengsum, 0, 0);
             this.tlpToppPanel.Controls.Add(this.lblTid, 1, 0);
             this.tlpToppPanel.Controls.Add(this.lblBruker, 2, 0);
@@ -76,7 +76,7 @@
             this.lblPoengsum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblPoengsum.Location = new System.Drawing.Point(3, 0);
             this.lblPoengsum.Name = "lblPoengsum";
-            this.lblPoengsum.Size = new System.Drawing.Size(268, 41);
+            this.lblPoengsum.Size = new System.Drawing.Size(236, 41);
             this.lblPoengsum.TabIndex = 0;
             this.lblPoengsum.Text = "Poengsum";
             this.lblPoengsum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -85,9 +85,9 @@
             // 
             this.lblTid.AutoSize = true;
             this.lblTid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTid.Location = new System.Drawing.Point(277, 0);
+            this.lblTid.Location = new System.Drawing.Point(245, 0);
             this.lblTid.Name = "lblTid";
-            this.lblTid.Size = new System.Drawing.Size(268, 41);
+            this.lblTid.Size = new System.Drawing.Size(266, 41);
             this.lblTid.TabIndex = 1;
             this.lblTid.Text = "Tid";
             this.lblTid.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -96,9 +96,9 @@
             // 
             this.lblBruker.AutoSize = true;
             this.lblBruker.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblBruker.Location = new System.Drawing.Point(551, 0);
+            this.lblBruker.Location = new System.Drawing.Point(517, 0);
             this.lblBruker.Name = "lblBruker";
-            this.lblBruker.Size = new System.Drawing.Size(224, 41);
+            this.lblBruker.Size = new System.Drawing.Size(258, 41);
             this.lblBruker.TabIndex = 2;
             this.lblBruker.Text = "Brukernavn";
             this.lblBruker.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

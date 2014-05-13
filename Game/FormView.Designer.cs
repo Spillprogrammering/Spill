@@ -41,8 +41,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1132, 655);
-            this.MinimumSize = new System.Drawing.Size(1150, 700);
+            this.ClientSize = new System.Drawing.Size(882, 655);
+            this.MinimumSize = new System.Drawing.Size(900, 700);
             this.Name = "FormView";
             this.Text = "Object_Moving";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormView_KeyDown);

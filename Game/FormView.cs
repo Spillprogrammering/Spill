@@ -21,7 +21,6 @@ namespace Game
             
             this.Controls.Add(s);
             s.Focus();
-            
         }
 
 
@@ -39,7 +38,7 @@ namespace Game
 
         private void FormView_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -50,11 +49,6 @@ namespace Game
         private void FormView_KeyDown(object sender, KeyEventArgs e)
         {
             s.Bevegelse_KeyDown(sender, e);
-        }
-
-        private void gamePanel_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
 

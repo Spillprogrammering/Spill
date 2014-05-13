@@ -85,7 +85,7 @@ namespace Game
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
-        public void loginCheck(string username, string password)
+        public void loginCheck(string username, string password) 
         {
             string query = "SELECT * FROM User WHERE Username = '" + username + "' AND Password = '" + password + "'";
 
@@ -108,9 +108,9 @@ namespace Game
                     FormView level1 = new FormView();
                     level1.Show();
                 }
-                else
+                else 
                     MessageBox.Show("Feil brukernavn/passord kombinasjon");
-
+                
                 //close Data Reader
                 dataReader.Close();
 
@@ -130,7 +130,7 @@ namespace Game
         {
             string query = "Select Username FROM User WHERE Username = '" + username + "'";
             bool check = false;
-
+            
             //open connection
             if (this.OpenConnection() == true)
             {
@@ -170,7 +170,7 @@ namespace Game
                 }
                 else
                     MessageBox.Show("En bruker med dette navnet eksisterer allerede!" + Environment.NewLine + "Vennligst velg et annet brukernavn");
-
+                
             }
 
             //close connection

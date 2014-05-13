@@ -11,7 +11,15 @@ namespace Game
 {
     class level1SpillPanel : Panel
     {
-        GraphicsPath myPath = new GraphicsPath(); 
+        //Konstruktør for spillpanelet
+        public level1SpillPanel()
+        {
+            this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
+            this.UpdateStyles();
+        }
+
+
+        GraphicsPath myPath = new GraphicsPath();
         
 
     }

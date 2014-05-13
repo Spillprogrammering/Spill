@@ -8,5 +8,6 @@ namespace Game
 {
     class Hinder
     {
+        private int x;
     }
 }

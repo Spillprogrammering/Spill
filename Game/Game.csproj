@@ -123,6 +123,9 @@
     <Content Include="Resources\action.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\luftbalong1.png" />
+    <None Include="Resources\luftbalong.png" />
+    <None Include="Resources\Skystart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

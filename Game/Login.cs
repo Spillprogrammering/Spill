@@ -25,7 +25,7 @@ namespace Game
         {
             string username = tbLoginUsername.Text;
             string password = tbLoginPassword.Text;
-            db.loginCheck(username, password);
+            db.loginCheck(this, username, password);
             this.Hide();
         }
 
@@ -38,6 +38,15 @@ namespace Game
         private void btnLoginExit_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        public void loginFinished()
+        {
+            
+            FormView form = new FormView(this);
+            form.Show();
+            this.Hide();
+
         }
     }
 }

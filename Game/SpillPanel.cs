@@ -24,10 +24,12 @@ namespace Game
         Image[] images = new Image[1];
         private Image brikke;
         Graphics g;
+        Button btnStart = new Button();
+        
+
 
         public SpillPanel()
         {
-
             x = 100;
             y = 100;
             this.components = new System.ComponentModel.Container();
@@ -45,9 +47,29 @@ namespace Game
             mylist.Add(fig3);
             mylist.Add(fig4);
 
+            this.btnStart.BackColor = System.Drawing.Color.Transparent;
+            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStart.Location = new Point(300,200);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new Size(228, 128);
+            this.btnStart.Image = Game.Properties.Resources.Skystart;
+            this.btnStart.TabIndex = 0;
+            this.btnStart.UseVisualStyleBackColor = false;
+            this.Controls.Add(this.btnStart);
 
 
 
+
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            
+            //this.btnStart.Image = Image.FromFile(Application.StartupPath + @"\skystart.png");
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            btnStart.Hide();
+                       
+            
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -67,8 +89,8 @@ namespace Game
         }
         private void tegn_Paint(object sender, PaintEventArgs e)
         {
-            brikke = Image.FromFile(Application.StartupPath + @"\luftbalong.png");
-
+           // brikke = Image.FromFile(Application.StartupPath + @"luftbalong.png");
+            brikke =  Game.Properties.Resources.luftbalong;
             //e.Graphics.FillEllipse(Brushes.Yellow, x, y, 20, 20);
             // g = .CreateGraphics();
             e.Graphics.DrawImage(brikke, x, y, 30, 30);
@@ -76,7 +98,7 @@ namespace Game
             e.Graphics.FillRectangle(Brushes.Black, fig2[0], fig2[1], fig2[2], fig2[3]);
             e.Graphics.FillRectangle(Brushes.Black, fig3[0], fig3[1], fig3[2], fig3[3]);
             e.Graphics.FillRectangle(Brushes.Black, fig4[0], fig4[1], fig4[2], fig4[3]);
-            //e.Graphics.DrawIcon(new Icon("C:\\Users\\Marcus\\Documents\\Visual Studio 2012\\Projects\\Game\\Game\\action.ico"), r);
+          //  e.Graphics.DrawIcon(new Icon("C:\\Users\\Marcus\\Documents\\Visual Studio 2012\\Projects\\Game\\Game\\action.ico"), r);
         }
 
         private Boolean hindring(int e1)

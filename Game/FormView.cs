@@ -13,21 +13,24 @@ namespace Game
     public partial class FormView : Form
     {
         SpillPanel s = null;
+        Login loginRef;
 
-        public FormView()
+        public FormView(Login _loginRef)
         {
             InitializeComponent();
+            this.loginRef = _loginRef;
+
             s = new SpillPanel();
             
             this.Controls.Add(s);
-            s.Focus();
+            //s.Focus();
         }
 
 
-        private void FormView_Paint_1(object sender, PaintEventArgs e)
+       /* private void FormView_Paint_1(object sender, PaintEventArgs e)
         {
             
-        }
+        } */
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -41,14 +44,19 @@ namespace Game
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+       /* private void panel1_Paint(object sender, PaintEventArgs e)
         {
            
-        }
+        } */
 
         private void FormView_KeyDown(object sender, KeyEventArgs e)
         {
             s.Bevegelse_KeyDown(sender, e);
+        }
+
+        private void FormView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.loginRef.Close();
         }
 
 

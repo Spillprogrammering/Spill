@@ -23,7 +23,13 @@ namespace Game
             s = new SpillPanel();
             
             this.Controls.Add(s);
+
             //s.Focus();
+        }
+
+        public FormView()
+        {
+            // TODO: Complete member initialization
         }
 
 

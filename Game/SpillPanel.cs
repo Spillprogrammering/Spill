@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace Game
 {
-    public class SpillPanel : Panel
+    public class SpillPanel : Panel 
     {
         private int x;
         private int y;
@@ -26,26 +26,22 @@ namespace Game
         Graphics g;
         Button btnStart = new Button();
         
+        
 
 
         public SpillPanel()
         {
-            x = 100;
-            y = 100;
+            
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
-            this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             this.BackColor = System.Drawing.SystemColors.HotTrack;
             this.Size = new System.Drawing.Size(800, 600);
+            (this as Control).KeyDown += new System.Windows.Forms.KeyEventHandler(this.Bevegelse_KeyDown);
             this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.tegn_Paint);
-            (this as Control).KeyDown += new System.Windows.Forms.KeyEventHandler(this.Bevegelse_KeyDown);
-            mylist.Add(fig1);
-            mylist.Add(fig2);
-            mylist.Add(fig3);
-            mylist.Add(fig4);
+         
 
             this.btnStart.BackColor = System.Drawing.Color.Transparent;
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -55,19 +51,38 @@ namespace Game
             this.btnStart.Image = Game.Properties.Resources.Skystart;
             this.btnStart.TabIndex = 0;
             this.btnStart.UseVisualStyleBackColor = false;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             this.Controls.Add(this.btnStart);
+        }
+
+        public void Restart()
+        {
+            
+            x = 100;
+            y = 100;
 
 
+            mylist.Add(fig1);
+            mylist.Add(fig2);
+            mylist.Add(fig3);
+            mylist.Add(fig4);
+            
+            this.timer1.Enabled = true; 
+            btnStart.Visible = false;
+            
+            //btnStart.Visible = true;
 
 
         }
+
 
         private void btnStart_Click(object sender, EventArgs e)
         {
             
             //this.btnStart.Image = Image.FromFile(Application.StartupPath + @"\skystart.png");
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            btnStart.Hide();
+
+            Restart();
+            
                        
             
         }
@@ -81,6 +96,7 @@ namespace Game
                     Invalidate();
                 }
             }
+            
         }
         private void FormView_Load(object sender, EventArgs e)
         {
@@ -93,11 +109,14 @@ namespace Game
             brikke =  Game.Properties.Resources.luftbalong;
             //e.Graphics.FillEllipse(Brushes.Yellow, x, y, 20, 20);
             // g = .CreateGraphics();
+            e.Graphics.FillPie(Brushes.Purple, 150, 150, 50, 50, 50, 50);
             e.Graphics.DrawImage(brikke, x, y, 30, 30);
             e.Graphics.FillRectangle(Brushes.Black, fig1[0], fig1[1], fig1[2], fig1[3]);
             e.Graphics.FillRectangle(Brushes.Black, fig2[0], fig2[1], fig2[2], fig2[3]);
             e.Graphics.FillRectangle(Brushes.Black, fig3[0], fig3[1], fig3[2], fig3[3]);
             e.Graphics.FillRectangle(Brushes.Black, fig4[0], fig4[1], fig4[2], fig4[3]);
+
+            
           //  e.Graphics.DrawIcon(new Icon("C:\\Users\\Marcus\\Documents\\Visual Studio 2012\\Projects\\Game\\Game\\action.ico"), r);
         }
 
@@ -229,6 +248,9 @@ namespace Game
                         y += 2;
                         Invalidate();
                     }
+
+                    
+
                 }
             }
         }

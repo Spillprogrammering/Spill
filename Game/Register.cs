@@ -16,6 +16,9 @@ namespace Game
 
         public Register()
         {
+            this.StartPosition = FormStartPosition.CenterScreen; //Setter startposisjonen på formen til å være midt på skjermen
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; //gjør slik at du ikke kan justere på størrelsen
+            this.ControlBox = false; //Gjemmer "kontrollknappene" (Minimer, Maksimer og X)
             InitializeComponent();
         }
 
@@ -23,7 +26,7 @@ namespace Game
         {
             Login obj2 = new Login();
             obj2.regForm = this;
-            this.Close();
+            this.Hide();
             obj2.Show();
         }
 

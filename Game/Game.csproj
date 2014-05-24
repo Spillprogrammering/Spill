@@ -118,8 +118,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="luftbalong.png" />
-    <Content Include="luftbalong1.png" />
     <Content Include="Resources\action.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

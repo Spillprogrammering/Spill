@@ -56,11 +56,9 @@ namespace Game
         /// </summary>
         public void loginFinished()
         {
-            
             FormView form = new FormView(this); //Oppretter Formen for spillet 
             form.Show(); //Viser spill formen
             this.Hide(); //Gjemmer Login formen
-
         }
     }
 }

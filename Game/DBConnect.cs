@@ -104,7 +104,7 @@ namespace Game
                     loginRef.loginFinished();
                 }
                 else  //Gjør ingenting og be brukeren prøve å logge på en gang til....
-                    MessageBox.Show("Feil brukernavn/passord kombinasjon" + Environment.NewLine + "Prøv på nytt");
+                    MessageBox.Show("Feil brukernavn/passord kombinasjon" + Environment.NewLine + "Prøv på nytt", "Feil");
                 
                 //Lukker datareaderen
                 dataReader.Close();
@@ -165,7 +165,7 @@ namespace Game
                     MessageBox.Show("Bruker lagt til", "Suksess!");
                 }
                 else
-                    MessageBox.Show("En bruker med dette navnet eksisterer allerede!" + Environment.NewLine + "Vennligst velg et annet brukernavn");
+                    MessageBox.Show("En bruker med dette navnet eksisterer allerede!" + Environment.NewLine + "Vennligst velg et annet brukernavn", "Feil");
                 
             }
 

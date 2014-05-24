@@ -14,6 +14,9 @@ namespace Game
     {
         private DBConnect db = new DBConnect();
 
+        /// <summary>
+        /// Konstruktøren for Register klassen
+        /// </summary>
         public Register()
         {
             this.StartPosition = FormStartPosition.CenterScreen; //Setter startposisjonen på formen til å være midt på skjermen
@@ -22,6 +25,9 @@ namespace Game
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Klikk metode for tilbake til innlogging knappen
+        /// </summary>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Login obj2 = new Login();
@@ -30,19 +36,20 @@ namespace Game
             obj2.Show();
         }
 
+        /// <summary>
+        /// Klikk metode for Registrer knappen
+        /// </summary>
         private void btnRegisterForm_Click(object sender, EventArgs e)
         {
-            if (tbRegFormPassword.Text.Equals(tbRegFormPassword2.Text))
+            if (tbRegFormPassword.Text.Equals(tbRegFormPassword2.Text)) //sjekker om passordene matcher
             {
-                string username = tbRegFormUsername.Text;
-                string password = tbRegFormPassword.Text;
-                db.registerUser(username, password);
-
-                
+                string username = tbRegFormUsername.Text; //henter ut brukernavn
+                string password = tbRegFormPassword.Text; //henter ut passord
+                db.registerUser(username, password); //Kaller på registerUser metoden i DBConnect klassen
             }
-            else
+            else //hva som skjer hvis passordene ikke matcher
             {
-                MessageBox.Show("Passordene matcher ikke!");
+                MessageBox.Show("Passordene matcher ikke!" + Environment.NewLine + "Prøv igjen", "Feil");
             }
         }
 

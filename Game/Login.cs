@@ -18,6 +18,7 @@ namespace Game
 
         public Login()
         {
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; //gjør slik at du ikke kan justere på størrelsen
             InitializeComponent();
         }
 
@@ -26,7 +27,6 @@ namespace Game
             string username = tbLoginUsername.Text;
             string password = tbLoginPassword.Text;
             db.loginCheck(this, username, password);
-            this.Hide();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)

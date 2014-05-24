@@ -73,6 +73,16 @@ namespace Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LoginBakgrunn {
+            get {
+                object obj = ResourceManager.GetObject("LoginBakgrunn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap luftbalong {
             get {
                 object obj = ResourceManager.GetObject("luftbalong", resourceCulture);

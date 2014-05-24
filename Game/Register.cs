@@ -23,7 +23,7 @@ namespace Game
         {
             Login obj2 = new Login();
             obj2.regForm = this;
-            this.Visible = false;
+            this.Close();
             obj2.Show();
         }
 

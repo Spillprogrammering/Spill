@@ -123,6 +123,7 @@
     <Content Include="Resources\action.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\bakgrunn.png" />
     <None Include="Resources\luftbalong1.png" />
     <None Include="Resources\luftbalong.png" />
     <None Include="Resources\Skystart.png" />

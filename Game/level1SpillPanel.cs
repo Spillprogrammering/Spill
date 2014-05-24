@@ -18,8 +18,6 @@ namespace Game
             this.UpdateStyles();
         }
 
-
-        GraphicsPath myPath = new GraphicsPath();
         
 
     }

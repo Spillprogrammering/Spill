@@ -11,39 +11,34 @@ namespace Game
 {
     class Hinder
     {
-       
-        public Hinder()
+        private GraphicsPath myPath = new GraphicsPath(); 
+        private Brush brush = Brushes.CornflowerBlue; //farge på hinder
+        private int x; //posisjon
+        private int y; //posisjon
+        private int hoyde; //høyde på hinder
+        private int bredde; //bredde på hinder
+        private int level; //tar vare på hvilket level man er på
+
+        /// <summary>
+        /// Konstruktør for hinder
+        /// </summary>
+        public Hinder(int _x, int _y, int _hoyde, int _bredde, int _level)
         {
-            GraphicsPath myPath = new GraphicsPath();
+            x = _x;
+            y = _y;
+            hoyde = _hoyde;
+            bredde = _bredde;
+            level = _level;
+
             myPath.StartFigure(); // Starter en figur. 
-            myPath.AddLine(300, 150, 400, 190);
-            myPath.AddLine(300, 260, 420, 290);
+            myPath.AddLine(x, y, bredde, hoyde);
+            myPath.AddLine(199, 150, 410, 200); //hardkodet, fiks!
             myPath.CloseFigure(); //Lukk figuren!
         }
-        
-        public Object Hinder2()
+
+        public void Draw(Graphics g)
         {
-            GraphicsPath myPath = new GraphicsPath();
-            myPath.StartFigure(); //Ny figur. 
-            myPath.AddArc(175, 50, 50, 50, 0, -180);
-            myPath.AddLine(100, 0, 250, 20);
-            myPath.CloseFigure(); //Lukk!
-            return myPath;
+            g.FillPath(brush, myPath);
         }
-
-        public Object Hinder3()
-        {
-            Point[] myPoints = {new Point(40, 60), new Point(50, 70), new Point(30, 90)};
-            GraphicsPath myPath = new GraphicsPath();
-            myPath.StartFigure(); //Ny figur. 
-            myPath.AddLine(50, 20, 5, 90);
-            myPath.AddCurve(myPoints, 3);
-            myPath.AddLine(50, 150, 150, 180);
-            myPath.CloseFigure(); //Lukk! 
-            return myPath;
-        }
-   
-
-
     }
 }

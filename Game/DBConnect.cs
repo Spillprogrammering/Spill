@@ -79,6 +79,7 @@ namespace Game
 
         /// <summary>
         /// Metode for å sjekke innlogging
+        /// Kaller på loginFinished metoden i Login klassen hvis sjekk er OK
         /// </summary>
         public void loginCheck(Login loginRef, string username, string password) 
         {

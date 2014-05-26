@@ -10,12 +10,18 @@ using System.Windows.Forms;
 
 namespace Game
 {
-    public partial class Level1 : Form 
+    public partial class Level : Form 
     {
-        public Level1()
+        levelSpillPanel level1Panel = null;
+
+        public Level()
         {
             InitializeComponent();
+            level1Panel = new levelSpillPanel();
+            this.Controls.Add(level1Panel);
         }
+
+        
 
     }
 }

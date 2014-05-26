@@ -14,7 +14,7 @@ namespace Game
     {
         levelSpillPanel level1Panel = null;
 
-        public Level()
+        public Level(Login _loginref)
         {
             InitializeComponent();
             level1Panel = new levelSpillPanel();

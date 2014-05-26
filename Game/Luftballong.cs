@@ -10,7 +10,7 @@ namespace Game
     class Luftballong
     {
         //Medlemsvariabler
-        private PictureBox luftballong;
+        //private PictureBox luftballong;
         public int x { get; set; } //startposisjon 
         public int y { get; set; } //startposisjon
         public int bx { get; set; } //bevegelsesposisjon

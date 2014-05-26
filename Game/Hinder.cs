@@ -11,8 +11,8 @@ namespace Game
 {
     class Hinder
     {
-        private GraphicsPath myPath = new GraphicsPath(); 
-        private Brush brush = Brushes.CornflowerBlue; //farge på hinder
+        private GraphicsPath myPath = new GraphicsPath(); // Oppretter nytt Graphics-path objekt
+        private Brush brush = Brushes.GhostWhite; //farge på hinder
         private int x; //posisjon
         private int y; //posisjon
         private int hoyde; //høyde på hinder
@@ -30,10 +30,20 @@ namespace Game
             bredde = _bredde;
             level = _level;
 
+
+
+            /*
+            myPath.StartFigure();
+            myPath.AddEllipse(x, y, bredde, hoyde);
+            myPath.AddEllipse(x, y, bredde +5, hoyde +5);
+            myPath.CloseFigure();
+            */
+            
             myPath.StartFigure(); // Starter en figur. 
             myPath.AddLine(x, y, bredde, hoyde);
-            myPath.AddLine(199, 150, 410, 200); //hardkodet, fiks!
+            myPath.AddLine(x + 5, y + 5, bredde + 5, hoyde + 5); //hardkodet, fiks!
             myPath.CloseFigure(); //Lukk figuren!
+             
         }
 
         public void Draw(Graphics g)

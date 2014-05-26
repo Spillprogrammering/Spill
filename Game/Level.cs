@@ -14,14 +14,24 @@ namespace Game
     {
         levelSpillPanel level1Panel = null;
 
-        public Level()
+        //Konstruktør for Level formen
+        public Level(Login _loginRef)
         {
             InitializeComponent();
             level1Panel = new levelSpillPanel();
             this.Controls.Add(level1Panel);
+            //(this as Control).KeyDown += new System.Windows.Forms.KeyEventHandler(this.Bevegelse_KeyDown);
         }
 
-        
-
+        /// <summary>
+        /// Metode for hva som skjer når du lukker Formen
+        /// Avslutter spillet
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Level_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

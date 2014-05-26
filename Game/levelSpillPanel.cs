@@ -27,10 +27,11 @@ namespace Game
             this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true); 
             this.UpdateStyles();
 
+            //KeyEventHandler for knappene som skal styre luftballongen
             (this as Control).KeyDown += new System.Windows.Forms.KeyEventHandler(this.Bevegelse_KeyDown);
            
             //Legg til hindere, skyttere og smilefjes i lister HUSK LAG METODE FOR Å LEGGE ALLE HINDERE/SKYTTERE/SMILEYS I LISTE. OBJEKTORIENTERT!!!!!
-            hinderListe.Add(new Hinder(300, 260, 420, 290, 1));
+            hinderListe.Add(new Hinder(300, 260, 200, 200, 1));
             skytterListe.Add(new Skytter(new Point[] {new Point(10, 20), new Point(30,20), new Point(20,10) }));
             smileyListe.Add(new Smiley(222, 111, 10, 10));
 
@@ -43,6 +44,8 @@ namespace Game
             luftballongBilde.Image = Game.Properties.Resources.luftbalong;
             luftballongBilde.Size = new System.Drawing.Size(37, 67); //setter størrelsen på luftballongen
             this.Controls.Add(luftballongBilde);
+            
+            //Starter spillet FLYTTES INN UNDER ONCLICK TIL KNAPPEN SENERE
             start();
 
         }
@@ -53,12 +56,12 @@ namespace Game
         /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint(e);
+            base.OnPaint(e); //videresender til onpaint superklassen
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality; //Setter høy kvalitet på kantene til objektene
 
-            luftballongBilde.Location = new Point(luftballong.x, luftballong.y);
+            luftballongBilde.Location = new Point(luftballong.x, luftballong.y); //Setter posisjonen til luftballongen
 
-            //Går igjennom listen med objekter og tegner dem
+            //Går igjennom listene med objekter og tegner dem
             for (int i = 0; i < hinderListe.Count; i++) 
             {
                 Hinder hinder = hinderListe[i];
@@ -103,8 +106,6 @@ namespace Game
             Thread thread = new Thread(ts);
             thread.Start();
             thread.IsBackground = true;
-           
-
         }
 
         // Styring for piltastene, og hvor kraftig de går i hver sin rettning

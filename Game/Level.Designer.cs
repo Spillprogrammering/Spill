@@ -33,8 +33,8 @@
             this.lblTid = new System.Windows.Forms.Label();
             this.lblPoengsum = new System.Windows.Forms.Label();
             this.lblBrukernavn = new System.Windows.Forms.Label();
-            this.spillPanel = new Game.levelSpillPanel();
             this.btnStartSpill = new System.Windows.Forms.Button();
+            this.spillPanel = new Game.levelSpillPanel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tlpMeny.SuspendLayout();
             this.SuspendLayout();
@@ -103,15 +103,6 @@
             this.lblBrukernavn.TabIndex = 2;
             this.lblBrukernavn.Text = "Brukernavn:";
             // 
-            // spillPanel
-            // 
-            this.spillPanel.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.spillPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.spillPanel.Location = new System.Drawing.Point(3, 50);
-            this.spillPanel.Name = "spillPanel";
-            this.spillPanel.Size = new System.Drawing.Size(778, 509);
-            this.spillPanel.TabIndex = 1;
-            // 
             // btnStartSpill
             // 
             this.btnStartSpill.Location = new System.Drawing.Point(585, 3);
@@ -121,6 +112,15 @@
             this.btnStartSpill.Text = "Start";
             this.btnStartSpill.UseVisualStyleBackColor = true;
             // 
+            // spillPanel
+            // 
+            this.spillPanel.BackColor = System.Drawing.Color.SkyBlue;
+            this.spillPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spillPanel.Location = new System.Drawing.Point(3, 50);
+            this.spillPanel.Name = "spillPanel";
+            this.spillPanel.Size = new System.Drawing.Size(778, 509);
+            this.spillPanel.TabIndex = 1;
+            // 
             // Level
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,6 +129,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Level";
             this.Text = "Level 1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Level_FormClosing);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tlpMeny.ResumeLayout(false);
             this.tlpMeny.PerformLayout();

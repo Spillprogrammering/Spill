@@ -14,8 +14,9 @@ namespace Game
     {
         levelSpillPanel level1Panel = null;
 
+
         //Konstruktør for Level formen
-        public Level(Login _loginRef)
+        public Level(Login _loginref)
         {
             InitializeComponent();
             level1Panel = new levelSpillPanel();

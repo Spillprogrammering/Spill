@@ -109,7 +109,7 @@ namespace Game
             brikke =  Game.Properties.Resources.luftbalong;
             //e.Graphics.FillEllipse(Brushes.Yellow, x, y, 20, 20);
             // g = .CreateGraphics();
-            e.Graphics.FillPie(Brushes.Purple, 150, 150, 50, 50, 50, 50);
+            e.Graphics.FillPie(Brushes.Purple, 150, 150, 30, 50, 50, 50);
             e.Graphics.DrawImage(brikke, x, y, 30, 30);
             e.Graphics.FillRectangle(Brushes.Black, fig1[0], fig1[1], fig1[2], fig1[3]);
             e.Graphics.FillRectangle(Brushes.Black, fig2[0], fig2[1], fig2[2], fig2[3]);
@@ -233,7 +233,7 @@ namespace Game
                 {
                     if (!hindring(3))
                     {
-                        y -= 8;
+                        y -= 6;
                         Invalidate();
                     }
 

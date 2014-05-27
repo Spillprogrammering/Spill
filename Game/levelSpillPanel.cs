@@ -47,6 +47,7 @@ namespace Game
             //Legger til luftballongen
             luftballongBilde.Image = Game.Properties.Resources.luftbalong1;
             luftballongBilde.Size = new System.Drawing.Size(31, 60); //setter størrelsen på luftballong bildet
+            luftballongBilde.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.Controls.Add(luftballongBilde);
             
             //Starter spillet FLYTTES INN UNDER ONCLICK TIL KNAPPEN SENERE

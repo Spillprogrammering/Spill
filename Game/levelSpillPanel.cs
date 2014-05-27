@@ -140,7 +140,7 @@ namespace Game
             }
             else if (keyData == Keys.Right)
             {
-                if (luftballong.x < this.Width - 20)
+                if (luftballong.x < this.Width - 32)
                 {
                     luftballong.x += luftballong.bx;
                     this.Invalidate();
@@ -148,7 +148,7 @@ namespace Game
             }
             else if (keyData == Keys.Up)
             {
-                if (luftballong.y > 5)
+                if (luftballong.y > 2)
                 {
                     luftballong.y -= luftballong.by;
                     this.Invalidate();
@@ -156,7 +156,7 @@ namespace Game
             }
             else if (keyData == Keys.Down)
             {
-                if (luftballong.y < this.Height - 20)
+                if (luftballong.y < this.Height - 68)
                 {
                     luftballong.y += luftballong.by;
                     this.Invalidate();

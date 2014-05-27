@@ -34,23 +34,21 @@ namespace Game
         /// <param name="e"></param>
         private void Level_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            Application.Exit(); //Lukker applikasjonen ordentlig
         }
 
+        //Klikk metode for Help knappen
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            SpillInfo spillInfo = new SpillInfo();
-            spillInfo.Show();
+            SpillInfo spillInfo = new SpillInfo(); //Oppretter nytt SpillInfo form
+            spillInfo.Show(); //Viser det nye SpillInfo formet
         }
         
-        private void spillPanel_MouseClick(object sender, MouseEventArgs e)
-        {
-            spillPanel.Focus();
-        }
-        
+        //Klikk metode for StartKnappen
         private void btnStartSpill_Click(object sender, EventArgs e)
         {
-            spillPanel.Focus();
+            spillPanel.Focus(); //Setter fokus til spillpanelet
+            level1Panel.start(); // Kaller på start metoden i levelSpillPanel klassen
         }
 
 

@@ -18,7 +18,7 @@ namespace Game
         private List<Skytter> skytterListe = new List<Skytter>(); //Liste som tar vare på alle Skyttere
         private List<Smiley> smileyListe = new List<Smiley>(); //Liste som tar vare på alle smileyfjes
         private bool running = false; //Boolsk variabel som skal brukes til å sjekke om spillet kjører eller ikke
-        private System.Windows.Forms.Timer timer; //timer brukt til bevegelse
+        private System.Windows.Forms.Timer timer; //timer brukt til gravitasjon
 
         //Konstruktør for spillpanelet
         public levelSpillPanel()
@@ -39,7 +39,7 @@ namespace Game
             smileyListe.Add(new Smiley(322, 203, 50, 50, -60, -60, 2));
             smileyListe.Add(new Smiley(422, 303, 50, 50, -60, -60, 3));
 
-            //Timer til bevegelse
+            //Timer til gravitasjon
             timer = new System.Windows.Forms.Timer();
             timer.Interval = 20;
             timer.Tick += new EventHandler(timer_Tick);
@@ -50,19 +50,17 @@ namespace Game
             luftballongBilde.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.Controls.Add(luftballongBilde);
             
-            //Starter spillet FLYTTES INN UNDER ONCLICK TIL KNAPPEN SENERE
-            start();
-
         }
 
         /// <summary>
         /// Overstyrer OnPaint metoden
+        /// Kalles på hver gang man kjører Invalidate()
         /// </summary>
         /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e); //videresender til onpaint superklassen
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality; //Setter høy kvalitet på kantene til objektene
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality; //Glatter ut kantene til objektene
 
             luftballongBilde.Location = new Point(luftballong.x, luftballong.y); //Setter posisjonen til luftballongen
 
@@ -86,6 +84,7 @@ namespace Game
 
         /// <summary>
         /// Timer-tick metoden
+        /// Senker ballongen sin høyde hvert "tick"
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -93,7 +92,7 @@ namespace Game
         {
             if (luftballong.y < this.Height - 20)
             {
-                luftballong.y += 2;
+                luftballong.y += 1;
                 Invalidate();
             }
         }
@@ -103,9 +102,9 @@ namespace Game
         /// </summary>
         public void Run()
         {
-            while (true)
+            while (running)
             {
-                this.timer.Enabled = true; //starter timeren som blir brukt til bevegelse
+                timer.Enabled = true; //starter timeren som blir brukt til gravitasjon
                 this.Invalidate();
                 Thread.Sleep(17);
             }
@@ -116,12 +115,19 @@ namespace Game
         /// </summary>
         public void start()
         {
+            running = true;
             ThreadStart ts = new ThreadStart(Run);
             Thread thread = new Thread(ts);
             thread.Start();
             thread.IsBackground = true;
         }
 
+        /// <summary>
+        /// Metode for bevegelse
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="keyData"></param>
+        /// <returns></returns>
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Left)

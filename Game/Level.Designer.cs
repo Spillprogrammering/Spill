@@ -135,7 +135,6 @@
             this.spillPanel.Name = "spillPanel";
             this.spillPanel.Size = new System.Drawing.Size(778, 509);
             this.spillPanel.TabIndex = 1;
-            this.spillPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.spillPanel_MouseClick);
             // 
             // Level
             // 

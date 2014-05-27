@@ -14,7 +14,6 @@ namespace Game
     {
         levelSpillPanel level1Panel = null;
 
-
         //Konstruktør for Level formen
         public Level(Login _loginref)
         {
@@ -23,7 +22,6 @@ namespace Game
             this.Controls.Add(level1Panel);
             this.StartPosition = FormStartPosition.CenterScreen; //Setter startposisjonen på formen til å være midt på skjermen
             this.FormBorderStyle = FormBorderStyle.FixedSingle; //gjør slik at du ikke kan justere på størrelsen
-            //(this as Control).KeyDown += new System.Windows.Forms.KeyEventHandler(this.Bevegelse_KeyDown);
         }
 
         /// <summary>
@@ -48,7 +46,7 @@ namespace Game
         private void btnStartSpill_Click(object sender, EventArgs e)
         {
             spillPanel.Focus(); //Setter fokus til spillpanelet
-            level1Panel.start(); // Kaller på start metoden i levelSpillPanel klassen
+            level1Panel.start(); //Kaller på start metoden i levelSpillPanel klassen
         }
     }
 }

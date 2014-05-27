@@ -40,10 +40,11 @@ namespace Game
             smileyListe.Add(new Smiley(422, 303, 50, 50, -60, -60, 3));
 
             //Timer til gravitasjon
-            timer = new System.Windows.Forms.Timer();
-            timer.Interval = 20;
+            timer = new System.Windows.Forms.Timer(); //Oppretter timer
+            timer.Interval = 20; //Setter intervallet mellom hvert "tick"
             timer.Tick += new EventHandler(timer_Tick);
-           
+            timer.Enabled = true;
+
             //Legger til luftballongen
             luftballongBilde.Image = Game.Properties.Resources.luftbalong1;
             luftballongBilde.Size = new System.Drawing.Size(31, 60); //setter størrelsen på luftballong bildet
@@ -83,21 +84,6 @@ namespace Game
         }
 
         /// <summary>
-        /// Timer-tick metoden
-        /// Senker ballongen sin høyde hvert "tick"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            if (luftballong.y < this.Height - 20)
-            {
-                luftballong.y += 1;
-                Invalidate();
-            }
-        }
-
-        /// <summary>
         /// Kaller på invalidate metoden
         /// </summary>
         public void Run()
@@ -119,6 +105,21 @@ namespace Game
             Thread thread = new Thread(ts);
             thread.Start();
             thread.IsBackground = true;
+        }
+
+        /// <summary>
+        /// Timer-tick metoden
+        /// Senker ballongen sin høyde hvert "tick"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if (luftballong.y < this.Height - 20)
+            {
+                luftballong.y += 1;
+                Invalidate();
+            }
         }
 
         /// <summary>

@@ -5,13 +5,15 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Game
 {
-    class Smiley
+    class Smiley : Panel
     {
         //Medlemsvariabler
         private GraphicsPath myPath = new GraphicsPath();
+        Timer gravitasjon = new Timer();
         private Brush color;
         private int x; //start posisjon
         private int y; // start posisjon
@@ -53,6 +55,23 @@ namespace Game
                     color = Brushes.Red;
                     verdi = 100;
                     break;
+
+                case 3:
+                    color = Brushes.SeaGreen;
+                    verdi = 150;
+                    // omvent gravitasjon
+                    //gravitasjon = Timer_Tick(y);
+                    break;
+            }
+        }
+
+        // gravitasjon endring
+        private void Timer_Tick (object sender)
+        {
+            if (y < this.Height + 20)
+            {
+                y += -2;
+                Invalidate();
             }
         }
 

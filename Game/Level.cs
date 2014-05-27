@@ -34,5 +34,11 @@ namespace Game
         {
             Application.Exit();
         }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            SpillInfo spillInfo = new SpillInfo();
+            spillInfo.Show();
+        }
     }
 }

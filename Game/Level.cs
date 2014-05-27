@@ -50,7 +50,5 @@ namespace Game
             spillPanel.Focus(); //Setter fokus til spillpanelet
             level1Panel.start(); // Kaller på start metoden i levelSpillPanel klassen
         }
-
-
     }
 }

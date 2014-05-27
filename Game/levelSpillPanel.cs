@@ -104,7 +104,6 @@ namespace Game
         {
             while (running)
             {
-                timer.Enabled = true; //starter timeren som blir brukt til gravitasjon
                 this.Invalidate();
                 Thread.Sleep(17);
             }
@@ -123,7 +122,7 @@ namespace Game
         }
 
         /// <summary>
-        /// Metode for bevegelse
+        /// Metode for bevegelse av luftballong
         /// </summary>
         /// <param name="msg"></param>
         /// <param name="keyData"></param>
@@ -165,10 +164,5 @@ namespace Game
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
-
-
-
-
-
     }
 }

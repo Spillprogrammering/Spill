@@ -108,9 +108,10 @@
             // 
             // btnStartSpill
             // 
+            this.btnStartSpill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnStartSpill.Location = new System.Drawing.Point(468, 3);
             this.btnStartSpill.Name = "btnStartSpill";
-            this.btnStartSpill.Size = new System.Drawing.Size(75, 23);
+            this.btnStartSpill.Size = new System.Drawing.Size(149, 35);
             this.btnStartSpill.TabIndex = 3;
             this.btnStartSpill.Text = "Start";
             this.btnStartSpill.UseVisualStyleBackColor = true;
@@ -118,10 +119,11 @@
             // 
             // btnHelp
             // 
+            this.btnHelp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnHelp.Location = new System.Drawing.Point(622, 2);
-            this.btnHelp.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnHelp.Margin = new System.Windows.Forms.Padding(2);
             this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(77, 24);
+            this.btnHelp.Size = new System.Drawing.Size(154, 37);
             this.btnHelp.TabIndex = 4;
             this.btnHelp.Text = "Help";
             this.btnHelp.UseVisualStyleBackColor = true;

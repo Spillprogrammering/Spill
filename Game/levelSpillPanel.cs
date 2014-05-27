@@ -115,7 +115,7 @@ namespace Game
         /// <param name="e"></param>
         private void timer_Tick(object sender, EventArgs e)
         {
-            if (luftballong.y < this.Height - 20)
+            if (luftballong.y < this.Height - 65.5)
             {
                 luftballong.y += 1;
                 Invalidate();

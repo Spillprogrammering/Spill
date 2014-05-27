@@ -22,8 +22,8 @@ namespace Game
         public SpillInfo()
         {
             InitializeComponent();
-            System.Drawing.Graphics e;
-
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; //gjør slik at du ikke kan justere på størrelsen
+            this.StartPosition = FormStartPosition.CenterScreen; //Setter startposisjonen på formen til å være midt på skjermen
         }
 
 

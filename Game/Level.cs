@@ -21,6 +21,8 @@ namespace Game
             InitializeComponent();
             level1Panel = new levelSpillPanel();
             this.Controls.Add(level1Panel);
+            this.StartPosition = FormStartPosition.CenterScreen; //Setter startposisjonen på formen til å være midt på skjermen
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; //gjør slik at du ikke kan justere på størrelsen
             //(this as Control).KeyDown += new System.Windows.Forms.KeyEventHandler(this.Bevegelse_KeyDown);
         }
 
@@ -40,5 +42,17 @@ namespace Game
             SpillInfo spillInfo = new SpillInfo();
             spillInfo.Show();
         }
+        
+        private void spillPanel_MouseClick(object sender, MouseEventArgs e)
+        {
+            spillPanel.Focus();
+        }
+        
+        private void btnStartSpill_Click(object sender, EventArgs e)
+        {
+            spillPanel.Focus();
+        }
+
+
     }
 }

@@ -18,7 +18,7 @@ namespace Game
         private List<Skytter> skytterListe = new List<Skytter>(); //Liste som tar vare på alle Skyttere
         private List<Smiley> smileyListe = new List<Smiley>(); //Liste som tar vare på alle smileyfjes
         private bool running = false; //Boolsk variabel som skal brukes til å sjekke om spillet kjører eller ikke
-        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Timer timer; //timer brukt til bevegelse
 
         //Konstruktør for spillpanelet
         public levelSpillPanel()
@@ -27,17 +27,12 @@ namespace Game
             this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true); 
             this.UpdateStyles();
 
-            //KeyEventHandler for knappene som skal styre luftballongen
-            (this as Control).KeyDown += new System.Windows.Forms.KeyEventHandler(this.Bevegelse_KeyDown);
-           
             //Legg til hindere, skyttere og smilefjes i lister HUSK LAG METODE FOR Å LEGGE ALLE HINDERE/SKYTTERE/SMILEYS I LISTE. OBJEKTORIENTERT!!!!!
+            hinderListe.Add(new Hinder(300, 260, 200, 200));
+            hinderListe.Add(new Hinder(500, 300, 30, 50, 1));
+            hinderListe.Add(new Hinder(700, 250, 30, 50, 2));
 
-            hinderListe.Add(new Hinder(300, 260, 200, 200, 1));
             //skytterListe.Add(new Skytter(new Point[] {new Point(120, 160), new Point(110,120), new Point(160,120)}));
-            hinderListe.Add(new Hinder(90, 0, 20, 70, 3)); //Rektangel til høyre for ballongen
-            hinderListe.Add(new Hinder(0, 130, 30, 20, 3)); //Rektangel nedenfor ballongen
-            hinderListe.Add(new Hinder(100, 180, 150, 180, 1)); //Timeglasset
-            hinderListe.Add(new Hinder(400, 500, 250, 40, 4));
             //skytterListe.Add(new Skytter(new Point[] {new Point(10, 20), new Point(30,20), new Point(20,10) }));
             skytterListe.Add(new Skytter(600, 400, 80, 80, 70, 40));
             smileyListe.Add(new Smiley(222, 103, 50, 50, -60, -60, 1));
@@ -88,10 +83,18 @@ namespace Game
             }
         }
 
-        
+        /// <summary>
+        /// Timer-tick metoden
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timer_Tick(object sender, EventArgs e)
         {
-
+            if (luftballong.y < this.Height - 20)
+            {
+                luftballong.y += 2;
+                Invalidate();
+            }
         }
 
         /// <summary>
@@ -101,6 +104,7 @@ namespace Game
         {
             while (true)
             {
+                this.timer.Enabled = true; //starter timeren som blir brukt til bevegelse
                 this.Invalidate();
                 Thread.Sleep(17);
             }
@@ -117,10 +121,9 @@ namespace Game
             thread.IsBackground = true;
         }
 
-        // Styring for piltastene, og hvor kraftig de går i hver sin rettning
-        public void Bevegelse_KeyDown(object sender, KeyEventArgs e)
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (e.KeyCode == Keys.Left)
+            if (keyData == Keys.Left)
             {
                 if (luftballong.x > 0)
                 {
@@ -128,15 +131,15 @@ namespace Game
                     this.Invalidate();
                 }
             }
-            else if (e.KeyCode == Keys.Right)
+            else if (keyData == Keys.Right)
             {
                 if (luftballong.x < this.Width - 20)
                 {
-                    luftballong.x -= luftballong.bx;
+                    luftballong.x += luftballong.bx;
                     this.Invalidate();
                 }
             }
-            else if (e.KeyCode == Keys.Up)
+            else if (keyData == Keys.Up)
             {
                 if (luftballong.y > 5)
                 {
@@ -144,7 +147,7 @@ namespace Game
                     this.Invalidate();
                 }
             }
-            else if (e.KeyCode == Keys.Down)
+            else if (keyData == Keys.Down)
             {
                 if (luftballong.y < this.Height - 20)
                 {
@@ -152,6 +155,8 @@ namespace Game
                     this.Invalidate();
                 }
             } 
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
 

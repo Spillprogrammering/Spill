@@ -33,15 +33,16 @@ namespace Game
             //Legg til hindere, skyttere og smilefjes i lister HUSK LAG METODE FOR Å LEGGE ALLE HINDERE/SKYTTERE/SMILEYS I LISTE. OBJEKTORIENTERT!!!!!
 
             hinderListe.Add(new Hinder(300, 260, 200, 200, 1));
-            skytterListe.Add(new Skytter(new Point[] {new Point(120, 160), new Point(110,120), new Point(160,120)}));
+            //skytterListe.Add(new Skytter(new Point[] {new Point(120, 160), new Point(110,120), new Point(160,120)}));
             hinderListe.Add(new Hinder(90, 0, 20, 70, 3)); //Rektangel til høyre for ballongen
             hinderListe.Add(new Hinder(0, 130, 30, 20, 3)); //Rektangel nedenfor ballongen
             hinderListe.Add(new Hinder(100, 180, 150, 180, 1)); //Timeglasset
             hinderListe.Add(new Hinder(400, 500, 250, 40, 4));
-            skytterListe.Add(new Skytter(new Point[] {new Point(10, 20), new Point(30,20), new Point(20,10) }));
+            //skytterListe.Add(new Skytter(new Point[] {new Point(10, 20), new Point(30,20), new Point(20,10) }));
+            skytterListe.Add(new Skytter(600, 400, 80, 80, 70, 40));
             smileyListe.Add(new Smiley(222, 103, 50, 50, -60, -60, 1));
             smileyListe.Add(new Smiley(322, 203, 50, 50, -60, -60, 2));
-            smileyListe.Add(new Smiley(422, 303, 50, 50, -60, 40, 3));
+            smileyListe.Add(new Smiley(422, 303, 50, 50, -60, -60, 3));
 
             //Timer til bevegelse
             timer = new System.Windows.Forms.Timer();

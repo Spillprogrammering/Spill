@@ -11,19 +11,31 @@ namespace Game
     class Skytter
     {
         //Medlemsvariabler
-        private Point[] punkt; //Punkt-array som skal ta vare på punktene (der skytteren skal plasseres)
+        //private Point[] punkt; //Punkt-array som skal ta vare på punktene (der skytteren skal plasseres)
         private GraphicsPath myPath = new GraphicsPath();
-        private Brush brush = Brushes.Orange;
+        private Brush brush = Brushes.Black;
+        private int x; //start posisjon
+        private int y; // start posisjon
+        private int z; // vinkel bue
+        private int q; // vinkel spiss
+        private int hoyde;
+        private int bredde;
 
 
         /// <summary>
         /// Konstruktør for skytter
         /// </summary>
         /// <param name="_punkt"></param>
-        public Skytter(Point[] _punkt)
+        public Skytter(int _x, int _y, int _hoyde, int _bredde, int _z, int _q)
         {
-            punkt = _punkt;
-            myPath.AddPolygon(punkt);
+            //punkt = _punkt;
+            //myPath.AddPolygon(punkt);
+            x = _x;
+            y = _y;
+            z = _z;
+            q = _q;
+            hoyde = _hoyde;
+            bredde = _bredde;
         }
 
         /// <summary>
@@ -32,7 +44,8 @@ namespace Game
         /// <param name="g"></param>
         public void Draw(Graphics g)
         {
-            g.FillPolygon(brush, punkt);
+            //g.FillPolygon(brush, punkt);
+            g.FillPie(brush, x, y, hoyde, bredde, z, q);
         }
 
         /// <summary>

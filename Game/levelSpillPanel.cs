@@ -12,13 +12,15 @@ namespace Game
 {
     class levelSpillPanel : Panel
     {
-        private Luftballong luftballong = new Luftballong(10,10,2,3); //Luftballong
+        private Luftballong luftballong = new Luftballong(10,80,2,3); //Luftballong
         private PictureBox luftballongBilde = new PictureBox();
         private List<Hinder> hinderListe = new List<Hinder>(); //Liste som tar vare på alle Hinder-objekter
         private List<Skytter> skytterListe = new List<Skytter>(); //Liste som tar vare på alle Skyttere
         private List<Smiley> smileyListe = new List<Smiley>(); //Liste som tar vare på alle smileyfjes
         private bool running = false; //Boolsk variabel som skal brukes til å sjekke om spillet kjører eller ikke
         private System.Windows.Forms.Timer timer; //timer brukt til gravitasjon
+        Button btnStartSpill = new System.Windows.Forms.Button();
+        private Boolean gameStarted = false;
 
         //Konstruktør for spillpanelet
         public levelSpillPanel()
@@ -101,6 +103,7 @@ namespace Game
         /// </summary>
         public void start()
         {
+            gameStarted = true;
             running = true;
             //timer.Start();
             ThreadStart ts = new ThreadStart(Run);
@@ -117,9 +120,10 @@ namespace Game
         /// <param name="e"></param>
         private void timer_Tick(object sender, EventArgs e)
         {
-            if (luftballong.y < this.Height - 65.5)
+
+            if (luftballong.y > 0.5)  //  (< this.Width -65.5 (brukes for gravitasjon nedover))
             {
-                luftballong.y += 1;
+                luftballong.y -= 1;
                 Invalidate();
             }
         }

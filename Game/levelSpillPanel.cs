@@ -30,22 +30,26 @@ namespace Game
             this.UpdateStyles();
 
             //Legg til hindere, skyttere og smilefjes i lister HUSK LAG METODE FOR Å LEGGE ALLE HINDERE/SKYTTERE/SMILEYS I LISTE. OBJEKTORIENTERT!!!!!
-            hinderListe.Add(new Hinder(300, 260, 200, 200));
-            hinderListe.Add(new Hinder(500, 300, 30, 50, 1));
-            hinderListe.Add(new Hinder(700, 250, 30, 50, 2));
+            hinderListe.Add(new Hinder(90, 0, 20, 100, 1)); //rektangel til høyre for ballongen
+            hinderListe.Add(new Hinder(0, 160, 20, 10, 1)); //rektangel under ballongen
+            hinderListe.Add(new Hinder(210, 0, 20, 100, 1)); //rektangel nr. 2 til høyre for ballongen
+            hinderListe.Add(new Hinder(150, 250, 30, 30, 2)); //sirkelen
+
+            smileyListe.Add(new Smiley(135, 35, 50, 50, -60, -60, 1));
+            smileyListe.Add(new Smiley(75, 250, 50, 50, -60, -60, 1));
+            smileyListe.Add(new Smiley(30, 450, 50, 50, -60, -60, 2));
 
             //skytterListe.Add(new Skytter(new Point[] {new Point(120, 160), new Point(110,120), new Point(160,120)}));
             //skytterListe.Add(new Skytter(new Point[] {new Point(10, 20), new Point(30,20), new Point(20,10) }));
-            skytterListe.Add(new Skytter(600, 400, 80, 80, 70, 40));
-            smileyListe.Add(new Smiley(222, 103, 50, 50, -60, -60, 1));
-            smileyListe.Add(new Smiley(322, 203, 50, 50, -60, -60, 2));
+            skytterListe.Add(new Skytter(125, 430, 80, 80, 70, 40));
+            
             smileyListe.Add(new Smiley(422, 303, 50, 50, -60, -60, 3));
 
             //Timer til gravitasjon
             timer = new System.Windows.Forms.Timer(); //Oppretter timer
             timer.Interval = 20; //Setter intervallet mellom hvert "tick"
             timer.Tick += new EventHandler(timer_Tick);
-            timer.Enabled = true;
+            //timer.Enabled = false;
             //timer.Stop();
 
             //Legger til luftballongen
@@ -105,7 +109,8 @@ namespace Game
         {
             gameStarted = true;
             running = true;
-            //timer.Start();
+            timer.Enabled = true;
+            timer.Start();
             ThreadStart ts = new ThreadStart(Run);
             Thread thread = new Thread(ts);
             thread.Start();

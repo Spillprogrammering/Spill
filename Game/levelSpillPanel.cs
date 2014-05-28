@@ -44,6 +44,7 @@ namespace Game
             timer.Interval = 20; //Setter intervallet mellom hvert "tick"
             timer.Tick += new EventHandler(timer_Tick);
             timer.Enabled = true;
+            //timer.Stop();
 
             //Legger til luftballongen
             luftballongBilde.Image = Game.Properties.Resources.luftbalong1;
@@ -101,6 +102,7 @@ namespace Game
         public void start()
         {
             running = true;
+            //timer.Start();
             ThreadStart ts = new ThreadStart(Run);
             Thread thread = new Thread(ts);
             thread.Start();

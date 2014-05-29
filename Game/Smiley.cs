@@ -53,7 +53,7 @@ namespace Game
             switch (_verdi)
             {
                 case 1:
-                    color = Brushes.DarkTurquoise;
+                    color = Brushes.Yellow;
                     verdi = 50;
                     break;
 

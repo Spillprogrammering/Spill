@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Threading;
+using System.Media;
 
 namespace Game
 {
@@ -14,6 +15,7 @@ namespace Game
     {
         private Luftballong luftballong = new Luftballong(10,10,2,3); //Luftballong
         private PictureBox luftballongBilde = new PictureBox();
+        private SoundPlayer sp = new SoundPlayer(Game.Properties.Resources.gatherGemSound); //Lyd når du plukker opp samleobjekt (diamant)
         private List<Hinder> hinderListe = new List<Hinder>(); //Liste som tar vare på alle Hinder-objekter
         private List<Skytter> skytterListe = new List<Skytter>(); //Liste som tar vare på alle Skyttere
         private List<Smiley> smileyListe = new List<Smiley>(); //Liste som tar vare på alle smileyfjes
@@ -31,21 +33,7 @@ namespace Game
             this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true); 
             this.UpdateStyles();
 
-            //Legg til hindere, skyttere og smilefjes i lister HUSK LAG METODE FOR Å LEGGE ALLE HINDERE/SKYTTERE/SMILEYS I LISTE. OBJEKTORIENTERT!!!!!
-            hinderListe.Add(new Hinder(90, 0, 20, 100, 1)); //rektangel til høyre for ballongen
-            hinderListe.Add(new Hinder(0, 160, 20, 10, 1)); //rektangel under ballongen
-            hinderListe.Add(new Hinder(210, 0, 20, 100, 1)); //rektangel nr. 2 til høyre for ballongen
-            hinderListe.Add(new Hinder(150, 250, 30, 30, 2)); //sirkelen
-
-            smileyListe.Add(new Smiley(135, 35, 50, 50, -60, -60, 1));
-            smileyListe.Add(new Smiley(75, 250, 50, 50, -60, -60, 1));
-            smileyListe.Add(new Smiley(30, 450, 50, 50, -60, -60, 2));
-
-            //skytterListe.Add(new Skytter(new Point[] {new Point(120, 160), new Point(110,120), new Point(160,120)}));
-            //skytterListe.Add(new Skytter(new Point[] {new Point(10, 20), new Point(30,20), new Point(20,10) }));
-            skytterListe.Add(new Skytter(125, 430, 80, 80, 70, 40));
-            
-            smileyListe.Add(new Smiley(422, 303, 50, 50, -60, -60, 3));
+            tegnFigurer();
 
             //Timer til gravitasjon
             timer = new System.Windows.Forms.Timer(); //Oppretter timer
@@ -65,6 +53,32 @@ namespace Game
             luftballongBilde.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.Controls.Add(luftballongBilde);
             
+        }
+
+        /// <summary>
+        /// Metode som oppretter figurer og legger dem i en liste
+        /// </summary>
+        public void tegnFigurer()
+        {
+            //Legg til hindere, skyttere og smilefjes i lister HUSK LAG METODE FOR Å LEGGE ALLE HINDERE/SKYTTERE/SMILEYS I LISTE. OBJEKTORIENTERT!!!!!
+            hinderListe.Add(new Hinder(120, 0, 20, 100, 1)); //rektangel til høyre for ballongen
+            hinderListe.Add(new Hinder(0, 160, 20, 10, 1)); //rektangel under ballongen
+            hinderListe.Add(new Hinder(240, 0, 20, 100, 1)); //rektangel nr. 2 til høyre for ballongen
+            hinderListe.Add(new Hinder(175, 250, 30, 30, 2)); //sirkelen
+            hinderListe.Add(new Hinder(300, 250, 400, 250)); //Funky figur
+            hinderListe.Add(new Hinder(620, 30, 50, 50, 2)); //sirkelen oppi høyre hjørnet
+
+            smileyListe.Add(new Smiley(170, 35, 50, 50, -60, -60, 1));
+            smileyListe.Add(new Smiley(75, 250, 50, 50, -60, -60, 1));
+            smileyListe.Add(new Smiley(318, 220, 50, 50, -60, -60, 1));
+            smileyListe.Add(new Smiley(30, 450, 50, 50, -60, -60, 2));
+            smileyListe.Add(new Smiley(500, 100, 50, 50, -60, -60, 2));
+            smileyListe.Add(new Smiley(632, 270, 50, 50, -60, -60, 3));
+
+            //skytterListe.Add(new Skytter(new Point[] {new Point(120, 160), new Point(110,120), new Point(160,120)}));
+            //skytterListe.Add(new Skytter(new Point[] {new Point(10, 20), new Point(30,20), new Point(20,10) }));
+            skytterListe.Add(new Skytter(155, 430, 80, 80, 70, 40));
+            skytterListe.Add(new Skytter(610, 430, 80, 80, 70, 40));
         }
 
         /// <summary>
@@ -107,6 +121,7 @@ namespace Game
                 smiley.Draw(e.Graphics);
             }
         }
+
         // check for kollisjon mellom ballong og diamant 
         public bool checkcollision(GraphicsPath luftballongBilde, GraphicsPath smileyListe, PaintEventArgs e) 
         { 
@@ -115,7 +130,8 @@ namespace Game
             lb.Intersect(sl);
             if (!lb.IsEmpty(e.Graphics)) 
             {
-                 return true;
+                sp.Play();
+                return true;
             }
             else
                 return false;
@@ -156,8 +172,7 @@ namespace Game
         /// <param name="e"></param>
         private void timer_Tick(object sender, EventArgs e)
         {
-
-            if (luftballong.y < this.Width - 65.5)  
+            if (luftballong.y < this.Height - 65.5)  
             {
                 luftballong.y += 1;
                 Invalidate();

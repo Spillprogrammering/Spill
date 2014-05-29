@@ -56,7 +56,8 @@ namespace Game
         /// </summary>
         public void loginFinished()
         {
-            Level form = new Level(this); //Oppretter Formen for spillet 
+            string brukernavn = tbLoginUsername.Text;
+            Level form = new Level(this, brukernavn); //Oppretter Formen for spillet 
             form.Show(); //Viser spill formen
             this.Hide(); //Gjemmer Login formen
         }

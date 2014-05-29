@@ -21,7 +21,7 @@ namespace Game
         private int q; // vinkel spiss
         private int hoyde;
         private int bredde;
-        private int verdi;
+        private int verdi { get; set; }
         private GraphicsPath smileyPath = new GraphicsPath();
         
 

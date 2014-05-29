@@ -13,6 +13,7 @@ namespace Game
     public partial class Level : Form 
     {
         levelSpillPanel level1Panel = null;
+        int timeLeft; // Tid du har på deg til å fullføre brettet 
 
         //Konstruktør for Level formen
         public Level(Login _loginref, string brukernavn)
@@ -50,6 +51,28 @@ namespace Game
         {
             spillPanel.Focus(); //Setter fokus til spillpanelet
             level1Panel.start(); //Kaller på start metoden i levelSpillPanel klassen
+            btnStartSpill.Enabled = false;
+            timeLeft = 300;
+            timeLeftTimer.Enabled = true;
+            timeLeftTimer.Start();
+        }
+
+        private void timeLeftTimer_Tick(object sender, EventArgs e)
+        {
+            if (timeLeft > 0)
+            {
+                // Display the new time left 
+                // by updating the Time Left label.
+                timeLeft = timeLeft - 1;
+                lblTid.Text = "Tid igjen: " + timeLeft;
+                lblPoengsum.Text = "Poengsum: " + level1Panel.poengsum;
+            }
+            else
+            {
+                MessageBox.Show("Tiden er ute! " + Environment.NewLine + "Ballongen gikk tom for helium!");
+                btnStartSpill.Enabled = true;
+            }
+    
         }
     }
 }

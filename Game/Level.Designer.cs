@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tlpMeny = new System.Windows.Forms.TableLayoutPanel();
             this.lblTid = new System.Windows.Forms.Label();
@@ -36,6 +37,7 @@
             this.btnStartSpill = new System.Windows.Forms.Button();
             this.btnHelp = new System.Windows.Forms.Button();
             this.spillPanel = new Game.levelSpillPanel();
+            this.timeLeftTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tlpMeny.SuspendLayout();
             this.SuspendLayout();
@@ -138,6 +140,11 @@
             this.spillPanel.Size = new System.Drawing.Size(778, 509);
             this.spillPanel.TabIndex = 1;
             // 
+            // timeLeftTimer
+            // 
+            this.timeLeftTimer.Interval = 1000;
+            this.timeLeftTimer.Tick += new System.EventHandler(this.timeLeftTimer_Tick);
+            // 
             // Level
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,6 +171,7 @@
         private System.Windows.Forms.Label lblBrukernavn;
         private System.Windows.Forms.Button btnStartSpill;
         private System.Windows.Forms.Button btnHelp;
+        private System.Windows.Forms.Timer timeLeftTimer;
 
 
     }

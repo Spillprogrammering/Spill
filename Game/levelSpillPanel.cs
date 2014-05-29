@@ -22,7 +22,8 @@ namespace Game
         private bool running = false; //Boolsk variabel som skal brukes til å sjekke om spillet kjører eller ikke
         private System.Windows.Forms.Timer timer; //timer brukt til gravitasjon
         Button btnStartSpill = new System.Windows.Forms.Button();
-
+        public int poengsum;
+        
         private GraphicsPath luftBallongPath = new GraphicsPath();
         
 
@@ -33,6 +34,7 @@ namespace Game
             this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true); 
             this.UpdateStyles();
 
+            //kaller på metode som legger til alle figurene 
             tegnFigurer();
 
             //Timer til gravitasjon
@@ -116,6 +118,8 @@ namespace Game
                 if (checkcollision(luftBallongPath, smiley.getPath(), e))
                 {
                     smileyListe.RemoveAt(i); // fjerner diamanten når kollisjonen inntreffer 
+                    int verdi = smileyListe[i].Verdi; //Finner verdien til diamanten
+                    poengsum += verdi;
                 }
                 
                 smiley.Draw(e.Graphics);

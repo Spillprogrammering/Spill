@@ -23,7 +23,12 @@ namespace Game
         private int bredde;
         private int verdi { get; set; }
         private GraphicsPath smileyPath = new GraphicsPath();
-        
+
+        public int Verdi
+        {
+            get { return verdi;}
+
+        }
 
         /// <summary>
         /// Konstruktør for Smiley

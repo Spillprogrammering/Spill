@@ -53,6 +53,7 @@ namespace Game
             luftballongBilde.Size = new System.Drawing.Size(31, 60); //setter størrelsen på luftballong bildet
             luftballongBilde.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.Controls.Add(luftballongBilde);
+
         }
 
 
@@ -61,13 +62,7 @@ namespace Game
         /// </summary>
         public void tegnFigurer()
         {
-            //Legger til luftballongen
-            luftballongBilde.Image = Game.Properties.Resources.luftbalong1;
-            luftballongBilde.Size = new System.Drawing.Size(31, 60); //setter størrelsen på luftballong bildet
-            luftballongBilde.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.Controls.Add(luftballongBilde);
-
-            //Legg til hindere, skyttere og smilefjes i lister
+            //Legg til hindere, skyttere og smilefjes i lister HUSK LAG METODE FOR Å LEGGE ALLE HINDERE/SKYTTERE/SMILEYS I LISTE. OBJEKTORIENTERT!!!!!
             hinderListe.Add(new Hinder(120, 0, 20, 100, 1)); //rektangel til høyre for ballongen
             hinderListe.Add(new Hinder(0, 160, 20, 10, 1)); //rektangel under ballongen
             hinderListe.Add(new Hinder(240, 0, 20, 100, 1)); //rektangel nr. 2 til høyre for ballongen
@@ -97,19 +92,21 @@ namespace Game
         {
             base.OnPaint(e); //videresender til onpaint superklassen
              
+
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality; //Glatter ut kantene til objektene
 
             luftballongBilde.Location = new Point(luftballong.x, luftballong.y); //Setter posisjonen til luftballongen
-
+            
             Rectangle rec = new Rectangle(luftballong.x - 40, luftballong.y - 30, 10, 40); // Setter størrelsen på rektangelet i diamantene
             luftBallongPath.StartFigure();
             luftBallongPath.AddRectangle(rec);
             luftBallongPath.CloseFigure();
 
             //Går igjennom listene med objekter og tegner dem
-            for (int i = 0; i < hinderListe.Count; i++)
+            for (int i = 0; i < hinderListe.Count; i++) 
             {
                 Hinder hinder = hinderListe[i];
+
 
                 if (checkCollisionHinder(luftBallongPath, hinder.getPath(), e)) //Kaller på metoden som sjekker om luftballong kolliderer med hinder
                 {
@@ -117,6 +114,8 @@ namespace Game
                 }
 
                 hinder.Draw(e.Graphics); //Kaller på tegne metoden for hinder
+
+                hinder.Draw(e.Graphics);
             }
             for (int i = 0; i < skytterListe.Count; i++)
             {
@@ -127,7 +126,7 @@ namespace Game
             {
                 Smiley smiley = smileyListe[i];
 
-                if (checkCollision(luftBallongPath, smiley.getPath(), e)) //Kaller på metoden som sjekker om luftballong kolliderer med smiley
+                if (checkcollision(luftBallongPath, smiley.getPath(), e))
                 {
                     smileyListe.RemoveAt(i); // fjerner diamanten når kollisjonen inntreffer 
                     int verdi = smileyListe[i].Verdi; //Finner verdien til diamanten
@@ -151,11 +150,13 @@ namespace Game
             }
             else
                 return false;
+                
+                smiley.Draw(e.Graphics);
+            }
         }
 
-
         // check for kollisjon mellom ballong og diamant 
-        public bool checkCollision(GraphicsPath luftballongBilde, GraphicsPath smileyListe, PaintEventArgs e) 
+        public bool checkcollision(GraphicsPath luftballongBilde, GraphicsPath smileyListe, PaintEventArgs e) 
         { 
             Region lb = new Region(luftballongBilde); 
             Region sl = new Region(smileyListe); 
@@ -168,8 +169,6 @@ namespace Game
             else
                 return false;
         }
-
-        
 
         /// <summary>
         /// Kaller på invalidate metoden hvert 17 millisekund
@@ -188,13 +187,15 @@ namespace Game
         /// </summary>
         public void start()
         {
+            
             running = true;
             timer.Enabled = true;
             timer.Start();
             ThreadStart ts = new ThreadStart(Run);
             Thread thread = new Thread(ts);
-            thread.IsBackground = true;
             thread.Start();
+            thread.IsBackground = true;
+            
         }
 
         /// <summary>
@@ -270,11 +271,8 @@ namespace Game
 
         public void Restart()
         {
-            luftballong.x = 10;
-            luftballong.y = 10;
-            luftballong.bx = 2;
-            luftballong.by = 3;
 
+            luftballongBilde.Location = new Point(luftballong.x + 10, luftballong.y + 10);
             poengsum = 0;
         }
 

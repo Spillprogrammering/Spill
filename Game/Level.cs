@@ -13,28 +13,25 @@ namespace Game
 {
     public partial class Level : Form 
     {
-        private DBConnect db = new DBConnect();
         levelSpillPanel level1Panel = null;
         int timeLeft; // Tid du har på deg til å fullføre brettet 
         Button btnGameOver = new Button();
         Label lgm = new Label();
-        string username; //Brukt til å sende med brukernavnet til databasen
         private SoundPlayer sp = new SoundPlayer(Game.Properties.Resources.game_over);
 
         //Konstruktør for Level formen
-        public Level(Login _loginref, string _brukernavn)
+        public Level(Login _loginref, string brukernavn)
         {
             InitializeComponent();
-
-            
-            this.StartPosition = FormStartPosition.CenterScreen; //Setter startposisjonen på formen til å være midt på skjermen
-            this.FormBorderStyle = FormBorderStyle.FixedSingle; //gjør slik at du ikke kan justere på størrelsen
-
             level1Panel = new levelSpillPanel();
             this.Controls.Add(level1Panel);
-            
-            lblBrukernavn.Text = "Brukernavn: " + _brukernavn; //Skriver brukernavnet du logget på med i labelen
-            this.username = _brukernavn; //Henter ut brukernavnet
+            this.StartPosition = FormStartPosition.CenterScreen; //Setter startposisjonen på formen til å være midt på skjermen
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; //gjør slik at du ikke kan justere på størrelsen
+            lblPoengsum.Text = "Poengsum: 0";
+            lblBrukernavn.Text = "Brukernavn: " + brukernavn;
+
+
+           
         }
 
         /// <summary>
@@ -62,8 +59,6 @@ namespace Game
             level1Panel.start(); //Kaller på start metoden i levelSpillPanel klassen
             lbGameOver.Visible = false;
             btnStartSpill.Enabled = false;
-            level1Panel.Restart();
-            timeLeft = 300;
             
             timeLeft = 10;
             timeLeftTimer.Enabled = true;
@@ -71,25 +66,26 @@ namespace Game
 
         }
 
-        // Timeren som holder rede på hvor lang tid du har igjen på å fullføre levelen sin Tick-metode
+
         private void timeLeftTimer_Tick(object sender, EventArgs e)
         {
-            if (timeLeft > 0) // Hvis du har mer tid igjen
+            if (timeLeft > 0)
             {
                 lblPoengsum.Text = level1Panel.GetPoints();
-                timeLeft = timeLeft - 1; //trekker fra 1 sekund per tick
-                lblTid.Text = "Tid igjen: " + timeLeft; //Skriver gjenværende tid på labelen
+                // Display the new time left 
+                // by updating the Time Left label.
+                timeLeft = timeLeft - 1;
+                lblTid.Text = "Tid igjen: " + timeLeft;
+                //lblPoengsum.Text = "Poengsum: " + level1Panel.poengsum;
             }
-            else // Hvis tiden har gått ut
+            else
             {
-                timeLeftTimer.Stop(); //stopper timeren
-                sp.Play(); //Spiller av Game over lyd
+               // MessageBox.Show("Tiden er ute! " + Environment.NewLine + "Ballongen gikk tom for helium!");
+                timeLeftTimer.Stop();
+                sp.Play();
                 this.lbGameOver.Visible = true;
-
                 level1Panel.Restart();
-
                 btnStartSpill.Enabled = true;
-                db.insertHiScore(username, level1Panel.GetPoengsum()); //Legger resultatet inn i Hiscore lista
             } 
 
         }

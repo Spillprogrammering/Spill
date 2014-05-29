@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,9 @@ namespace Game
     {
         levelSpillPanel level1Panel = null;
         int timeLeft; // Tid du har på deg til å fullføre brettet 
+        Button btnGameOver = new Button();
+        Label lgm = new Label();
+        private SoundPlayer sp = new SoundPlayer(Game.Properties.Resources.game_over);
 
         //Konstruktør for Level formen
         public Level(Login _loginref, string brukernavn)
@@ -23,8 +27,10 @@ namespace Game
             this.Controls.Add(level1Panel);
             this.StartPosition = FormStartPosition.CenterScreen; //Setter startposisjonen på formen til å være midt på skjermen
             this.FormBorderStyle = FormBorderStyle.FixedSingle; //gjør slik at du ikke kan justere på størrelsen
-
+            lblPoengsum.Text = "Poengsum: 0";
             lblBrukernavn.Text = "Brukernavn: " + brukernavn;
+
+
            
         }
 
@@ -51,28 +57,39 @@ namespace Game
         {
             spillPanel.Focus(); //Setter fokus til spillpanelet
             level1Panel.start(); //Kaller på start metoden i levelSpillPanel klassen
+            lbGameOver.Visible = false;
             btnStartSpill.Enabled = false;
-            timeLeft = 300;
+            level1Panel.Restart();
+            timeLeft = 10;
             timeLeftTimer.Enabled = true;
             timeLeftTimer.Start();
+
         }
+
 
         private void timeLeftTimer_Tick(object sender, EventArgs e)
         {
             if (timeLeft > 0)
             {
+                lblPoengsum.Text = level1Panel.GetPoints();
                 // Display the new time left 
                 // by updating the Time Left label.
                 timeLeft = timeLeft - 1;
                 lblTid.Text = "Tid igjen: " + timeLeft;
-                lblPoengsum.Text = "Poengsum: " + level1Panel.poengsum;
+                //lblPoengsum.Text = "Poengsum: " + level1Panel.poengsum;
             }
             else
             {
-                MessageBox.Show("Tiden er ute! " + Environment.NewLine + "Ballongen gikk tom for helium!");
+               // MessageBox.Show("Tiden er ute! " + Environment.NewLine + "Ballongen gikk tom for helium!");
+                timeLeftTimer.Stop();
+                sp.Play();
+                this.lbGameOver.Visible = true;
+                
                 btnStartSpill.Enabled = true;
-            }
-    
+            } 
+
         }
+
+
     }
 }

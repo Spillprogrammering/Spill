@@ -25,7 +25,7 @@ namespace Game
             bx = _bx;
             by = _by;
         }
-        
+
 
     }
 }

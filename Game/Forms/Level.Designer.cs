@@ -102,7 +102,7 @@
             this.lblPoengsum.Name = "lblPoengsum";
             this.lblPoengsum.Size = new System.Drawing.Size(199, 51);
             this.lblPoengsum.TabIndex = 1;
-            this.lblPoengsum.Text = "Poengsum:";
+            this.lblPoengsum.Text = "Poengsum: 0";
             // 
             // lblBrukernavn
             // 

@@ -167,7 +167,7 @@ namespace Game
             Thread thread = new Thread(ts);
             thread.Start();
             thread.IsBackground = true;
-            timer.Stop();
+            
         }
 
         /// <summary>

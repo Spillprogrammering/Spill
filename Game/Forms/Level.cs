@@ -13,14 +13,16 @@ namespace Game
 {
     public partial class Level : Form 
     {
+        private DBConnect db = new DBConnect();
         levelSpillPanel level1Panel = null;
         int timeLeft; // Tid du har på deg til å fullføre brettet 
         Button btnGameOver = new Button();
         Label lgm = new Label();
+        string username;
         private SoundPlayer sp = new SoundPlayer(Game.Properties.Resources.game_over);
 
         //Konstruktør for Level formen
-        public Level(Login _loginref, string brukernavn)
+        public Level(Login _loginref, string _brukernavn)
         {
             InitializeComponent();
             level1Panel = new levelSpillPanel();
@@ -28,7 +30,8 @@ namespace Game
             this.StartPosition = FormStartPosition.CenterScreen; //Setter startposisjonen på formen til å være midt på skjermen
             this.FormBorderStyle = FormBorderStyle.FixedSingle; //gjør slik at du ikke kan justere på størrelsen
             lblPoengsum.Text = "Poengsum: 0";
-            lblBrukernavn.Text = "Brukernavn: " + brukernavn;
+            lblBrukernavn.Text = "Brukernavn: " + _brukernavn;
+            this.username = _brukernavn;
         }
 
         /// <summary>
@@ -78,8 +81,6 @@ namespace Game
             else
             {
                 timeLeftTimer.Stop();
-                MessageBox.Show("Tiden er ute! " + Environment.NewLine + "Ballongen gikk tom for helium!");
-               // MessageBox.Show("Tiden er ute! " + Environment.NewLine + "Ballongen gikk tom for helium!");
                 timeLeftTimer.Stop();
                 sp.Play();
                 this.lbGameOver.Visible = true;
@@ -87,6 +88,8 @@ namespace Game
                 level1Panel.Restart();
 
                 btnStartSpill.Enabled = true;
+
+                db.insertHiScore(username, level1Panel.GetPoengsum());
             } 
 
         }

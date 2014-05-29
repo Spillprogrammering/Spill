@@ -15,6 +15,7 @@ namespace Game
 
         public Register regForm = new Register();
         private DBConnect db = new DBConnect();
+        public Forms.HiScore hiScoreForm;
         
         /// <summary>
         /// Konstruktøren for Login klassen
@@ -60,6 +61,13 @@ namespace Game
             Level form = new Level(this, brukernavn); //Oppretter Formen for spillet 
             form.Show(); //Viser spill formen
             this.Hide(); //Gjemmer Login formen
+        }
+
+        //Klikk metode som viser Hi-Score lista
+        private void btnHiScore_Click(object sender, EventArgs e)
+        {
+            hiScoreForm = new Forms.HiScore();
+            hiScoreForm.Show();
         }
     }
 }

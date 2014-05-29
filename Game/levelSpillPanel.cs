@@ -113,7 +113,7 @@ namespace Game
 
                 if (checkCollisionHinder(luftBallongPath, hinder.getPath(), e)) //Kaller på metoden som sjekker om luftballong kolliderer med smiley
                 {
-                    MessageBox.Show("Game over!");
+
                 }
 
                 hinder.Draw(e.Graphics);
@@ -131,9 +131,7 @@ namespace Game
                 {
                     smileyListe.RemoveAt(i); // fjerner diamanten når kollisjonen inntreffer 
                     int verdi = smileyListe[i].Verdi; //Finner verdien til diamanten
-                    //poengsum += verdi;
                     poengsum += verdi;
-                    //poengsum = 100;
                 }
 
                 smiley.Draw(e.Graphics);
@@ -265,6 +263,11 @@ namespace Game
             return "Poengsum: " + poengsum;
         }
 
+        public int GetPoengsum()
+        {
+            return poengsum;
+        }
+
         public void Restart()
         {
             luftballong.x = 10;
@@ -274,5 +277,7 @@ namespace Game
 
             poengsum = 0;
         }
+
+        
     }
 }

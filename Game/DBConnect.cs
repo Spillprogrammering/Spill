@@ -8,6 +8,11 @@ using System.Windows.Forms;
 
 namespace Game
 {
+    /// <summary>
+    /// Klasse som skal ta seg av alt som har med databasen å gjøre
+    /// For eksempel å hente ut Hiscore listen
+    /// @Author Halvard
+    /// </summary>
     class DBConnect
     {
         //Medlemsvariabler
@@ -174,5 +179,17 @@ namespace Game
             this.CloseConnection();
         }
 
+        //Metode for å legge resultate inn i Hiscore liste
+        public void insertHiScore(string username, int score)
+        {
+            string query = "INSERT INTO `BRP_DB1`.`Hiscore` (`Username`, `Date`, `Score`) VALUES ('"+ username + "', now(), '" + score + "');";
+            if (this.OpenConnection() == true)
+            {
+                //Oppretter en MySQL kommando
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                cmd.ExecuteNonQuery();
+            }
+            this.CloseConnection();
+        }
     }
 }

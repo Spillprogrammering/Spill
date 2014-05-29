@@ -34,6 +34,7 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnLoginExit = new System.Windows.Forms.Button();
+            this.btnHiScore = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblVelkommen
@@ -85,7 +86,7 @@
             // 
             // btnLoginExit
             // 
-            this.btnLoginExit.Location = new System.Drawing.Point(85, 197);
+            this.btnLoginExit.Location = new System.Drawing.Point(85, 225);
             this.btnLoginExit.Name = "btnLoginExit";
             this.btnLoginExit.Size = new System.Drawing.Size(100, 23);
             this.btnLoginExit.TabIndex = 5;
@@ -93,12 +94,23 @@
             this.btnLoginExit.UseVisualStyleBackColor = true;
             this.btnLoginExit.Click += new System.EventHandler(this.btnLoginExit_Click);
             // 
+            // btnHiScore
+            // 
+            this.btnHiScore.Location = new System.Drawing.Point(85, 197);
+            this.btnHiScore.Name = "btnHiScore";
+            this.btnHiScore.Size = new System.Drawing.Size(100, 22);
+            this.btnHiScore.TabIndex = 6;
+            this.btnHiScore.Text = "Poengtavle";
+            this.btnHiScore.UseVisualStyleBackColor = true;
+            this.btnHiScore.Click += new System.EventHandler(this.btnHiScore_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Game.Properties.Resources.LoginBakgrunn;
             this.ClientSize = new System.Drawing.Size(267, 281);
+            this.Controls.Add(this.btnHiScore);
             this.Controls.Add(this.btnLoginExit);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogin);
@@ -120,5 +132,6 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button btnLoginExit;
+        private System.Windows.Forms.Button btnHiScore;
     }
 }

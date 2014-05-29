@@ -167,6 +167,7 @@ namespace Game
             Thread thread = new Thread(ts);
             thread.Start();
             thread.IsBackground = true;
+            timer.Stop();
         }
 
         /// <summary>
@@ -237,11 +238,8 @@ namespace Game
 
         public void Restart()
         {
-            luftballong.x = 10;
-            luftballong.y = 10;
-            luftballong.bx = 2;
-            luftballong.by = 3;
 
+            luftballongBilde.Location = new Point(luftballong.x + 10, luftballong.y + 10);
             poengsum = 0;
         }
     }

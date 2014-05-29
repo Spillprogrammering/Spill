@@ -59,7 +59,7 @@ namespace Game
             level1Panel.start(); //Kaller på start metoden i levelSpillPanel klassen
             lbGameOver.Visible = false;
             btnStartSpill.Enabled = false;
-            level1Panel.Restart();
+            
             timeLeft = 10;
             timeLeftTimer.Enabled = true;
             timeLeftTimer.Start();
@@ -84,7 +84,7 @@ namespace Game
                 timeLeftTimer.Stop();
                 sp.Play();
                 this.lbGameOver.Visible = true;
-                
+                level1Panel.Restart();
                 btnStartSpill.Enabled = true;
             } 
 

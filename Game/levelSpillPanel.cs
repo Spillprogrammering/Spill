@@ -79,7 +79,7 @@ namespace Game
 
             luftballongBilde.Location = new Point(luftballong.x, luftballong.y); //Setter posisjonen til luftballongen
             
-            Rectangle rec = new Rectangle(luftballong.x - 50, luftballong.y, 1, 1); // Setter størrelsen på rektangelet i diamantene
+            Rectangle rec = new Rectangle(luftballong.x - 40, luftballong.y - 30, 10, 40); // Setter størrelsen på rektangelet i diamantene
             luftBallongPath.StartFigure();
             luftBallongPath.AddRectangle(rec);
             luftBallongPath.CloseFigure();
@@ -157,7 +157,7 @@ namespace Game
         private void timer_Tick(object sender, EventArgs e)
         {
 
-            if (luftballong.y < this.Width - 65.5)  
+            if (luftballong.y < this.Height - 65.5)  
             {
                 luftballong.y += 1;
                 Invalidate();

@@ -15,13 +15,16 @@ namespace Game
         levelSpillPanel level1Panel = null;
 
         //Konstruktør for Level formen
-        public Level(Login _loginref)
+        public Level(Login _loginref, string brukernavn)
         {
             InitializeComponent();
             level1Panel = new levelSpillPanel();
             this.Controls.Add(level1Panel);
             this.StartPosition = FormStartPosition.CenterScreen; //Setter startposisjonen på formen til å være midt på skjermen
             this.FormBorderStyle = FormBorderStyle.FixedSingle; //gjør slik at du ikke kan justere på størrelsen
+
+            lblBrukernavn.Text = "Brukernavn: " + brukernavn;
+           
         }
 
         /// <summary>

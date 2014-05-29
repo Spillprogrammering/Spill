@@ -135,6 +135,7 @@
     <Content Include="Resources\action.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\gatherGemSound.wav" />
     <None Include="Resources\Dturkis1.png" />
     <None Include="Resources\Drød1.png" />
     <None Include="Resources\Dgrønn1.png" />

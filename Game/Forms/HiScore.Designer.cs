@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.hiscoreBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.hiScoreDataSet = new Game.HiScoreDataSet();
-            this.hiscoreTableAdapter = new Game.HiScoreDataSetTableAdapters.HiscoreTableAdapter();
             this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.scoreDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hiscoreBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.hiScoreDataSet = new Game.HiScoreDataSet();
+            this.hiscoreTableAdapter = new Game.HiScoreDataSetTableAdapters.HiscoreTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hiscoreBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hiScoreDataSet)).BeginInit();
@@ -62,20 +62,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(345, 316);
             this.dataGridView1.TabIndex = 0;
             // 
-            // hiscoreBindingSource
-            // 
-            this.hiscoreBindingSource.DataMember = "Hiscore";
-            this.hiscoreBindingSource.DataSource = this.hiScoreDataSet;
-            // 
-            // hiScoreDataSet
-            // 
-            this.hiScoreDataSet.DataSetName = "HiScoreDataSet";
-            this.hiScoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // hiscoreTableAdapter
-            // 
-            this.hiscoreTableAdapter.ClearBeforeFill = true;
-            // 
             // usernameDataGridViewTextBoxColumn
             // 
             this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
@@ -96,6 +82,20 @@
             this.dateDataGridViewTextBoxColumn.HeaderText = "Dato";
             this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
             this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hiscoreBindingSource
+            // 
+            this.hiscoreBindingSource.DataMember = "Hiscore";
+            this.hiscoreBindingSource.DataSource = this.hiScoreDataSet;
+            // 
+            // hiScoreDataSet
+            // 
+            this.hiScoreDataSet.DataSetName = "HiScoreDataSet";
+            this.hiScoreDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // hiscoreTableAdapter
+            // 
+            this.hiscoreTableAdapter.ClearBeforeFill = true;
             // 
             // HiScore
             // 

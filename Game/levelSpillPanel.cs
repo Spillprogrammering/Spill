@@ -25,24 +25,24 @@ namespace Game
         private static int poengsum;
         private GraphicsPath luftBallongPath = new GraphicsPath();
         
+        
 
         //Konstruktør for spillpanelet
         public levelSpillPanel()
         {
             //Fjerner "blinking" når spillet tegnes
-            this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true); 
+            this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
             this.UpdateStyles();
 
-            //kaller på metode som legger til alle figurene 
-            tegnFigurer();
+            tegnFigurer(); //tegner alle figurer
 
             //Timer til gravitasjon
             timer = new System.Windows.Forms.Timer(); //Oppretter timer
             timer.Interval = 20; //Setter intervallet mellom hvert "tick"
             timer.Tick += new EventHandler(timer_Tick);
 
-            //timer.Enabled = true;
-            //timer.Start();
+            timer.Enabled = true;
+            timer.Start();
 
             //timer.Enabled = false;
 
@@ -96,8 +96,8 @@ namespace Game
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e); //videresender til onpaint superklassen
-                
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality; //Glatter ut kantene til objektene'
+             
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality; //Glatter ut kantene til objektene
 
             luftballongBilde.Location = new Point(luftballong.x, luftballong.y); //Setter posisjonen til luftballongen
 
@@ -111,17 +111,17 @@ namespace Game
             {
                 Hinder hinder = hinderListe[i];
 
-                if (checkCollisionHinder(luftBallongPath, hinder.getPath(), e)) //Kaller på metoden som sjekker om luftballong kolliderer med smiley
+                if (checkCollisionHinder(luftBallongPath, hinder.getPath(), e)) //Kaller på metoden som sjekker om luftballong kolliderer med hinder
                 {
-
+                    //Gjør ingenting atm, for det er en bug
                 }
 
-                hinder.Draw(e.Graphics);
+                hinder.Draw(e.Graphics); //Kaller på tegne metoden for hinder
             }
             for (int i = 0; i < skytterListe.Count; i++)
             {
                 Skytter skytter = skytterListe[i];
-                skytter.Draw(e.Graphics);
+                skytter.Draw(e.Graphics); //Kaller på tegne metoden for skytterne
             }
             for (int i = 0; i < smileyListe.Count; i++)
             {
@@ -134,9 +134,9 @@ namespace Game
                     poengsum += verdi;
                 }
 
-                smiley.Draw(e.Graphics);
+                smiley.Draw(e.Graphics); //Kaller på tegne metoden for "Smileys"
             }
-            
+
         }
 
         // check for kollisjon mellom ballong og hinder
@@ -172,7 +172,7 @@ namespace Game
         
 
         /// <summary>
-        /// Kaller på invalidate metoden
+        /// Kaller på invalidate metoden hvert 17 millisekund
         /// </summary>
         public void Run()
         {
@@ -184,7 +184,7 @@ namespace Game
         }
 
         /// <summary>
-        /// Starter tråd som spillet kjører i
+        /// Starter tråd som spillet "kjører" i
         /// </summary>
         public void start()
         {

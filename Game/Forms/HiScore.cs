@@ -10,8 +10,18 @@ using System.Windows.Forms;
 
 namespace Game.Forms
 {
+    /// <summary>
+    /// Form som viser Hiscore lista
+    /// Inneholder kun en DataGridView som henter ut fra databasen
+    /// 
+    /// Spørringen som sendes mot databasen ser slik ut:
+    /// SELECT Username, `Date`, Score FROM Hiscore ORDER BY Score DESC
+    /// 
+    /// @Author Halvard
+    /// </summary>
     public partial class HiScore : Form
     {
+        //Konstruktør
         public HiScore()
         {
             InitializeComponent();
@@ -20,10 +30,7 @@ namespace Game.Forms
         //Metode som kjøres når HiScore formen åpnes
         private void HiScore_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'hiScoreDataSet.Hiscore' table. You can move, or remove it, as needed.
             this.hiscoreTableAdapter.FillByScore(this.hiScoreDataSet.Hiscore);
-
         }
-
     }
 }

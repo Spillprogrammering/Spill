@@ -25,7 +25,7 @@ namespace Game
         //Konstruktør
         public DBConnect()
         {
-            Initialize();
+            Initialize(); //Kaller på metode som initialiserer alle nødvendige variabler som trengs for å koble opp mot databasen
         }
 
         
@@ -43,6 +43,7 @@ namespace Game
             connection = new MySqlConnection(connectionString);
         }
 
+        #region Åpning og lukking av databasetilkobling
         //Metode som åpner tilkoblingen til databasen
         private bool OpenConnection()
         {
@@ -81,7 +82,9 @@ namespace Game
                 return false;
             }
         }
+        #endregion
 
+        #region Login sjekk
         /// <summary>
         /// Metode for å sjekke innlogging
         /// Kaller på loginFinished metoden i Login klassen hvis sjekk er OK
@@ -118,9 +121,10 @@ namespace Game
                 //Lukker tilkoblingen til databasen
                 this.CloseConnection();
             }
-            
         }
+        #endregion
 
+        #region Legge til en bruker
         /// <summary>
         /// Metode som kobler til databasen og legger til bruker.
         /// Lukker så tilkoblingen til databasen etter den er ferdigkjørt.
@@ -178,18 +182,22 @@ namespace Game
             //Lukker tilkoblingen til databasen
             this.CloseConnection();
         }
+        #endregion
 
+        #region Hiscore
         //Metode for å legge resultate inn i Hiscore liste
         public void insertHiScore(string username, int score)
         {
+            //Databasespørringen
             string query = "INSERT INTO `BRP_DB1`.`Hiscore` (`Username`, `Date`, `Score`) VALUES ('"+ username + "', now(), '" + score + "');";
+            
             if (this.OpenConnection() == true)
             {
-                //Oppretter en MySQL kommando
-                MySqlCommand cmd = new MySqlCommand(query, connection);
-                cmd.ExecuteNonQuery();
+                MySqlCommand cmd = new MySqlCommand(query, connection);//Oppretter en MySQL kommando
+                cmd.ExecuteNonQuery(); // kjører spørringen mot databasen
             }
-            this.CloseConnection();
+            this.CloseConnection(); // Lukker tilkoblingen
         }
+        #endregion
     }
 }

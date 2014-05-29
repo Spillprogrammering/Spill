@@ -22,8 +22,7 @@ namespace Game
         private bool running = false; //Boolsk variabel som skal brukes til å sjekke om spillet kjører eller ikke
         private System.Windows.Forms.Timer timer; //timer brukt til gravitasjon
         Button btnStartSpill = new System.Windows.Forms.Button();
-        public int poengsum;
-        
+        private static int poengsum;
         private GraphicsPath luftBallongPath = new GraphicsPath();
         
 
@@ -49,9 +48,13 @@ namespace Game
 
             //timer.Stop();
 
-            
-            
+            //Legger til luftballongen
+            luftballongBilde.Image = Game.Properties.Resources.luftbalong1;
+            luftballongBilde.Size = new System.Drawing.Size(31, 60); //setter størrelsen på luftballong bildet
+            luftballongBilde.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.Controls.Add(luftballongBilde);
         }
+
 
         /// <summary>
         /// Metode som oppretter figurer og legger dem i en liste
@@ -129,6 +132,8 @@ namespace Game
                     smileyListe.RemoveAt(i); // fjerner diamanten når kollisjonen inntreffer 
                     int verdi = smileyListe[i].Verdi; //Finner verdien til diamanten
                     //poengsum += verdi;
+                    poengsum += verdi;
+                    //poengsum = 100;
                 }
 
                 smiley.Draw(e.Graphics);
@@ -210,6 +215,7 @@ namespace Game
             }
         }
 
+
         /// <summary>
         /// Metode for bevegelse av luftballong
         /// </summary>
@@ -252,6 +258,21 @@ namespace Game
             } 
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        public string GetPoints()
+        {
+            return "Poengsum: " + poengsum;
+        }
+
+        public void Restart()
+        {
+            luftballong.x = 10;
+            luftballong.y = 10;
+            luftballong.bx = 2;
+            luftballong.by = 3;
+
+            poengsum = 0;
         }
     }
 }

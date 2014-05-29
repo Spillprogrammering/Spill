@@ -37,17 +37,9 @@ namespace Game
             x2 = _x2;
             y2 = _y2;
 
-            /*
-            myPath.StartFigure();
-            myPath.AddEllipse(x, y, bredde, hoyde);
-            myPath.AddEllipse(x, y, bredde +5, hoyde +5);
-            myPath.CloseFigure();
-            */
-
-
             myPath.StartFigure(); // Starter en figur. 
             myPath.AddLine(x1, y1, x2, y2);
-            myPath.AddLine(x1 + 5, y1 + 5, x2 + 5, y2 + 5);
+            myPath.AddLine(x1 + 50, y1 + 50, x2 + 50, y2 + 50);
             myPath.CloseFigure(); //Lukk figuren!
         }
 
@@ -84,6 +76,10 @@ namespace Game
             }
         }
 
+        public GraphicsPath getPath()
+        {
+            return myPath;
+        }
        
 
         public void Draw(Graphics g)

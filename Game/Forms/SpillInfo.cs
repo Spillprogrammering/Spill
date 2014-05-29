@@ -22,7 +22,12 @@ namespace Game
 
         private void btnlukk_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
+        }
+
+        private void SpillInfo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
         }
     }
 }

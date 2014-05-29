@@ -69,6 +69,7 @@ namespace Game
             }
             else
             {
+                timeLeftTimer.Stop();
                 MessageBox.Show("Tiden er ute! " + Environment.NewLine + "Ballongen gikk tom for helium!");
                 btnStartSpill.Enabled = true;
             }

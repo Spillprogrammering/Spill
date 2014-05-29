@@ -150,9 +150,6 @@ namespace Game
             }
             else
                 return false;
-                
-                smiley.Draw(e.Graphics);
-            }
         }
 
         // check for kollisjon mellom ballong og diamant 

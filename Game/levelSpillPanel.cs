@@ -12,7 +12,7 @@ namespace Game
 {
     class levelSpillPanel : Panel
     {
-        private Luftballong luftballong = new Luftballong(10,80,2,3); //Luftballong
+        private Luftballong luftballong = new Luftballong(10,10,2,3); //Luftballong
         private PictureBox luftballongBilde = new PictureBox();
         private List<Hinder> hinderListe = new List<Hinder>(); //Liste som tar vare på alle Hinder-objekter
         private List<Skytter> skytterListe = new List<Skytter>(); //Liste som tar vare på alle Skyttere
@@ -20,7 +20,9 @@ namespace Game
         private bool running = false; //Boolsk variabel som skal brukes til å sjekke om spillet kjører eller ikke
         private System.Windows.Forms.Timer timer; //timer brukt til gravitasjon
         Button btnStartSpill = new System.Windows.Forms.Button();
-        private Boolean gameStarted = false;
+
+        private GraphicsPath luftBallongPath = new GraphicsPath();
+        
 
         //Konstruktør for spillpanelet
         public levelSpillPanel()
@@ -46,6 +48,7 @@ namespace Game
             timer.Interval = 20; //Setter intervallet mellom hvert "tick"
             timer.Tick += new EventHandler(timer_Tick);
             timer.Enabled = true;
+            timer.Start();
             //timer.Stop();
 
             //Legger til luftballongen
@@ -67,6 +70,11 @@ namespace Game
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality; //Glatter ut kantene til objektene
 
             luftballongBilde.Location = new Point(luftballong.x, luftballong.y); //Setter posisjonen til luftballongen
+            
+            Rectangle rec = new Rectangle(luftballong.x - 50, luftballong.y, 1, 1); // Setter størrelsen på rektangelet i diamantene
+            luftBallongPath.StartFigure();
+            luftBallongPath.AddRectangle(rec);
+            luftBallongPath.CloseFigure();
 
             //Går igjennom listene med objekter og tegner dem
             for (int i = 0; i < hinderListe.Count; i++) 
@@ -82,8 +90,27 @@ namespace Game
             for (int i = 0; i < smileyListe.Count; i++)
             {
                 Smiley smiley = smileyListe[i];
+
+                if (checkcollision(luftBallongPath, smiley.getPath(), e))
+                {
+                    smileyListe.RemoveAt(i); // fjerner diamanten når kollisjonen inntreffer 
+                }
+                
                 smiley.Draw(e.Graphics);
             }
+        }
+        // check for kollisjon mellom ballong og diamant 
+        public bool checkcollision(GraphicsPath luftballongBilde, GraphicsPath smileyListe, PaintEventArgs e) 
+        { 
+            Region lb = new Region(luftballongBilde); 
+            Region sl = new Region(smileyListe); 
+            lb.Intersect(sl);
+            if (!lb.IsEmpty(e.Graphics)) 
+            {
+                 return true;
+            }
+            else
+                return false;
         }
 
         /// <summary>
@@ -103,7 +130,7 @@ namespace Game
         /// </summary>
         public void start()
         {
-            gameStarted = true;
+            
             running = true;
             //timer.Start();
             ThreadStart ts = new ThreadStart(Run);
@@ -121,9 +148,9 @@ namespace Game
         private void timer_Tick(object sender, EventArgs e)
         {
 
-            if (luftballong.y > 0.5)  //  (< this.Width -65.5 (brukes for gravitasjon nedover))
+            if (luftballong.y < this.Width - 65.5)  
             {
-                luftballong.y -= 1;
+                luftballong.y += 1;
                 Invalidate();
             }
         }

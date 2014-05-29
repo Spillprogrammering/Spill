@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace Game
         public int y { get; set; } //startposisjon
         public int bx { get; set; } //bevegelsesposisjon
         public int by { get; set; } //bevegelsesposisjon
+        
 
         public Luftballong(int _x, int _y, int _bx, int _by)
         {
@@ -23,7 +25,6 @@ namespace Game
             bx = _bx;
             by = _by;
         }
-
         
 
     }

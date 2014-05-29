@@ -22,6 +22,7 @@ namespace Game
         private int hoyde;
         private int bredde;
         private int verdi;
+        private GraphicsPath smileyPath = new GraphicsPath();
         
 
         /// <summary>
@@ -44,6 +45,11 @@ namespace Game
             bredde = _bredde;
             verdi = _verdi;
 
+            smileyPath.StartFigure();
+            smileyPath.AddEllipse(x, y, bredde, hoyde);
+            smileyPath.CloseFigure();
+
+
             switch (_verdi)
             {
                 case 1:
@@ -63,6 +69,11 @@ namespace Game
                     //gravitasjon = Timer_Tick(y);
                     break;
             }
+        }
+
+        public GraphicsPath getPath()
+        {
+            return smileyPath;
         }
 
         // gravitasjon endring

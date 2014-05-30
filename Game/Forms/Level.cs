@@ -66,9 +66,7 @@ namespace Game
             lbGameOver.Visible = false;
             btnStartSpill.Enabled = false;
             level1Panel.Restart();
-            timeLeft = 300;
-            
-            timeLeft = 60;
+            timeLeft = 10;
             timeLeftTimer.Enabled = true;
             timeLeftTimer.Start();
         }

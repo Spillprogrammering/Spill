@@ -9,6 +9,7 @@ using System.Drawing.Drawing2D;
 using System.Threading;
 using System.Media;
 using Game.Forms;
+
 namespace Game
 {
     /// <summary>
@@ -145,20 +146,6 @@ namespace Game
 
         }
 
-     /*   public void tegnFigurer()
-        {
-            hinderListe.Add(new Hinder(300, 400, 80, 30, 1));
-            hinderListe.Add(new Hinder(500, 400, 80, 30, 1));
-            hinderListe.Add(new Hinder(300, 400, 30, 30, 2));
-            hinderListe.Add(new Hinder(600, 400, 30, 30, 2));
-
-            smileyListe.Add(new Smiley(170, 35, 50, 50, -60, -60, 1));
-
-            skytterListe.Add(new Skytter(155, 430, 80, 80, 70, 40));
-            skytterListe.Add(new Skytter(610, 430, 80, 80, 70, 40));
-
-        } */
-
         /// <summary>
         /// Overstyrer OnPaint metoden
         /// Kalles på hver gang man kjører Invalidate()
@@ -172,7 +159,7 @@ namespace Game
             Rectangle rec = new Rectangle(luftballong.x - 40, luftballong.y - 30, 10, 40); // Setter størrelsen på rektangelet i diamantene
             luftBallongPath.StartFigure();
             luftBallongPath.AddRectangle(rec);
-            luftBallongPath.CloseFigure(); 
+            luftBallongPath.CloseFigure();
 
             //Går igjennom listene med figurer og tegner dem
             //Hinderlisten
@@ -207,9 +194,9 @@ namespace Game
 
                 {
                     int verdi = smileyListe[i].Verdi; //Finner verdien til diamanten
-
-                    smileyListe.RemoveAt(i); // fjerner diamanten når kollisjonen inntreffer 
                     poengsum += verdi;
+                    smileyListe.RemoveAt(i); // fjerner diamanten når kollisjonen inntreffer 
+                    
                     if (smileyListe.Count < 1)
                     {
                         Clear();

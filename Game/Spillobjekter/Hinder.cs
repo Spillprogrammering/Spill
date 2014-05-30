@@ -9,8 +9,13 @@ using System.Windows.Forms;
 
 namespace Game
 {
+    /// <summary>
+    /// Klasse for hinder-figurene
+    /// @Author Halvard, Marcus, Bjørn
+    /// </summary>
     class Hinder
     {
+        #region Variabler
         private GraphicsPath myPath = new GraphicsPath(); // Oppretter nytt Graphics-path objekt
         private Brush brush = Brushes.GhostWhite; //farge på hinder
         private int x1; //X1 koordinat
@@ -20,16 +25,13 @@ namespace Game
         private int hoyde; // høyde på hinder
         private int bredde; // bredde på hinder
         private int hinder; //hvilket hinder som skal brukes
+        #endregion
 
         /// <summary>
         /// Konstruktør for Hinder med AddLine
         /// x1 og y1 er koordinat for hvor linjen skal "starte"
         /// y1 og x2 er koordinat for hvor linjen skal "slutte"
         /// </summary>
-        /// <param name="_x1"></param>
-        /// <param name="_x2"></param>
-        /// <param name="_y1"></param>
-        /// <param name="_y2"></param>
         public Hinder(int _x1, int _y1, int _x2, int _y2)
         {
             x1 = _x1;
@@ -37,22 +39,17 @@ namespace Game
             x2 = _x2;
             y2 = _y2;
 
-            myPath.StartFigure(); // Starter en figur. 
+            myPath.StartFigure(); //Starter en figur. 
             myPath.AddLine(x1, y1, x2, y2);
             myPath.AddLine(x1 + 50, y1 + 50, x2 + 50, y2 + 50);
-            myPath.CloseFigure(); //Lukk figuren!
+            myPath.CloseFigure(); //Lukker figuren
         }
 
        /// <summary>
        /// Konstruktør for Rektangel eller sirkel hinder
-       /// 1 for rektangel
-       /// 2 for sirkel
+       /// verdi 1 for rektangel
+       /// verdi 2 for sirkel
        /// </summary>
-       /// <param name="_x1"></param>
-       /// <param name="_y1"></param>
-       /// <param name="_bredde"></param>
-       /// <param name="_hoyde"></param>
-       /// <param name="_hinder"></param>
         public Hinder(int _x1, int _y1, int _bredde, int _hoyde, int _hinder)
         {
             x1 = _x1;
@@ -76,12 +73,13 @@ namespace Game
             }
         }
 
+        //Get metode som brukes til å sjekke kollisjon
         public GraphicsPath getPath()
         {
             return myPath;
         }
        
-
+        //Metoden for å tegne hinderet
         public void Draw(Graphics g)
         {
             g.FillPath(brush, myPath);

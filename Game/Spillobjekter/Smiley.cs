@@ -9,11 +9,15 @@ using System.Windows.Forms;
 
 namespace Game
 {
+    /// <summary>
+    /// Klasse for smileyobjektene (Ser ut som diamanter)
+    /// @Author Halvard, Marcus, Bjørn
+    /// </summary>
     class Smiley : Panel
     {
         //Medlemsvariabler
         private GraphicsPath myPath = new GraphicsPath();
-        Timer gravitasjon = new Timer();
+        private Timer gravitasjon = new Timer();
         private Brush color;
         private int x; //start posisjon
         private int y; // start posisjon
@@ -33,13 +37,6 @@ namespace Game
         /// <summary>
         /// Konstruktør for Smiley
         /// </summary>
-        /// <param name="_x"></param>
-        /// <param name="_y"></param>
-        /// <param name="_z"></param>
-        /// <param name="_q"></param>
-        /// <param name="_hoyde"></param>
-        /// <param name="_bredde"></param>
-        /// <param name="_level"></param>
         public Smiley(int _x, int _y, int _z, int _q, int _hoyde, int _bredde, int _verdi)
         {
             x = _x;
@@ -94,7 +91,6 @@ namespace Game
         /// <summary>
         /// Tegne metoden for "Smiley'en"
         /// </summary>
-        /// <param name="g"></param>
         public void Draw(Graphics g)
         {
             g.FillPie(color, x, y, z, q, bredde, hoyde);

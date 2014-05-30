@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Threading;
 using System.Media;
+using Game.Spillobjekter;
 
 namespace Game
 {
@@ -21,14 +22,17 @@ namespace Game
         private Luftballong luftballong = new Luftballong(10,10,2,3); //Luftballong
         private PictureBox luftballongBilde = new PictureBox();
         private SoundPlayer sp = new SoundPlayer(Game.Properties.Resources.gatherGemSound); //Lyd når du plukker opp samleobjekt (diamant)
+        
+        private bool running = false; //Boolsk variabel som skal brukes til å sjekke om spillet kjører eller ikke
+        private System.Windows.Forms.Timer timer; //timer brukt til gravitasjon
+        private static int poengsum;
+        private GraphicsPath luftBallongPath = new GraphicsPath();
+
+
         private List<Hinder> hinderListe = new List<Hinder>(); //Liste som tar vare på alle Hinder-objekter
         private List<Skytter> skytterListe = new List<Skytter>(); //Liste som tar vare på alle Skyttere
         private List<Smiley> smileyListe = new List<Smiley>(); //Liste som tar vare på alle smileyfjes
-        private bool running = false; //Boolsk variabel som skal brukes til å sjekke om spillet kjører eller ikke
-        private System.Windows.Forms.Timer timer; //timer brukt til gravitasjon
-        Button btnStartSpill = new System.Windows.Forms.Button();
-        private static int poengsum;
-        private GraphicsPath luftBallongPath = new GraphicsPath();
+        private List<Kule> kuleListe = new List<Kule>(); //Liste som tar vare på alle kulene
         #endregion
 
 
@@ -78,6 +82,9 @@ namespace Game
             //Skyttere            
             skytterListe.Add(new Skytter(155, 430, 80, 80, 70, 40));
             skytterListe.Add(new Skytter(610, 430, 80, 80, 70, 40));
+            //Kuler
+            kuleListe.Add(new Kule(193, 470,5, 1));
+            kuleListe.Add(new Kule(648, 470, 5, 1));
         }
 
         /// <summary>
@@ -129,6 +136,35 @@ namespace Game
 
                 smiley.Draw(e.Graphics); //Kaller på tegne metoden for "Smileys"
             }
+            //Kulelisten
+            for (int i = 0; i < kuleListe.Count; i++)
+            {
+                Kule kule = kuleListe[i];
+
+                // Sjekk for å bestemme retningen på kulene
+                if (kule.Retning == 1)
+                {
+                    kule.TegnOpp(e.Graphics);
+                }
+                else if (kule.Retning == 2)
+                {
+                    kule.TegnHøyre(e.Graphics);
+                }
+                else if (kule.Retning == 3)
+                {
+                    kule.TegnVenstre(e.Graphics);
+                }
+                else if (kule.Retning == 4)
+                {
+                    kule.TegnNed(e.Graphics);
+                }
+
+                // Sjekker kollisjon mellom ballong og kule
+                if (checkCollisionKule(luftBallongPath, kule.getKulePath(), e)) // Sjekker om man har kollidert med en Kule
+                {
+                    sp.Play();
+                }
+            }
         }
 
         // check for kollisjon mellom ballong og hinder
@@ -137,6 +173,20 @@ namespace Game
             Region lb = new Region(luftballongBilde); 
             Region hl = new Region(hinderListe);
             lb.Intersect(hl);
+            if (!lb.IsEmpty(e.Graphics))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
+        // check for kollisjon mellom ballong og kule
+        public bool checkCollisionKule(GraphicsPath luftballongBilde, GraphicsPath kuleListe, PaintEventArgs e)
+        {
+            Region lb = new Region(luftballongBilde);
+            Region kl = new Region(kuleListe);
+            lb.Intersect(kl);
             if (!lb.IsEmpty(e.Graphics))
             {
                 return true;
@@ -159,6 +209,19 @@ namespace Game
             else
                 return false;
         }
+
+        /*
+        public kollisjonSjekk(GraphicsPath luftballongBilde, GraphicsPath smileyListe, GraphicsPath hinderListe, GraphicsPath kuleListe, PaintEventArgs e)
+        {
+            Region lb = new Region(luftballongBilde);
+            Region sl = new Region(smileyListe);
+            Region hl = new Region(hinderListe);
+            Region kl = new Region(kuleListe);
+
+            if (lb.Intersect(sl))
+
+            
+        }*/
 
         /// <summary>
         /// Kaller på invalidate metoden hvert 17 millisekund

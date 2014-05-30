@@ -8,7 +8,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Threading;
 using System.Media;
-
+using Game.Forms;
 namespace Game
 {
     /// <summary>
@@ -30,6 +30,7 @@ namespace Game
         private static int poengsum;
         private GraphicsPath luftBallongPath = new GraphicsPath();
         #endregion
+        private Level level;
 
 
         //Konstruktør for spillpanelet
@@ -61,7 +62,7 @@ namespace Game
         /// </summary>
         public void tegnFigurer()
         {
-<<<<<<< HEAD
+
             /*
             //Legg til hindere, skyttere og smilefjes i lister HUSK LAG METODE FOR Å LEGGE ALLE HINDERE/SKYTTERE/SMILEYS I LISTE. OBJEKTORIENTERT!!!!!
             hinderListe.Add(new Hinder(120, 0, 20, 100, 1)); //rektangel til høyre for ballongen
@@ -71,7 +72,7 @@ namespace Game
             hinderListe.Add(new Hinder(300, 250, 400, 250)); //Funky figur
             hinderListe.Add(new Hinder(620, 30, 50, 50, 2)); //sirkelen oppi høyre hjørnet
 
-=======
+
             //Hindere
             hinderListe.Add(new Hinder(120, 0, 20, 100, 1)); 
             hinderListe.Add(new Hinder(0, 160, 20, 10, 1));
@@ -80,7 +81,7 @@ namespace Game
             hinderListe.Add(new Hinder(300, 250, 400, 250)); 
             hinderListe.Add(new Hinder(620, 30, 50, 50, 2)); 
             //Smileys
->>>>>>> f55e96a41d16e475dab292d2bc6235aef9fdb87a
+
             smileyListe.Add(new Smiley(170, 35, 50, 50, -60, -60, 1));
             smileyListe.Add(new Smiley(75, 250, 50, 50, -60, -60, 1));
             smileyListe.Add(new Smiley(318, 220, 50, 50, -60, -60, 1));
@@ -180,7 +181,7 @@ namespace Game
             for (int i = 0; i < hinderListe.Count; i++) 
             {
                 Hinder hinder = hinderListe[i];
-<<<<<<< HEAD
+
                 
 
                 if (checkCollisionHinder(luftBallongPath, hinder.getPath(), e)) //Kaller på metoden som sjekker om luftballong kolliderer med smiley
@@ -188,7 +189,6 @@ namespace Game
                     
                 }
                 hinder.Draw(e.Graphics);
-=======
 
 
                 if (checkCollisionHinder(luftBallongPath, hinder.getPath(), e)) //Kaller på metoden som sjekker om luftballong kolliderer med hinder
@@ -197,7 +197,7 @@ namespace Game
                 }
 
                 hinder.Draw(e.Graphics); //Kaller på tegne metoden for hinder
->>>>>>> f55e96a41d16e475dab292d2bc6235aef9fdb87a
+
             }
             //Skytterlisten
             for (int i = 0; i < skytterListe.Count; i++)
@@ -209,16 +209,16 @@ namespace Game
             for (int i = 0; i < smileyListe.Count; i++)
             {
                 Smiley smiley = smileyListe[i];
-<<<<<<< HEAD
+
                 
                 if (checkcollision(luftBallongPath, smiley.getPath(), e))
-=======
+
 
                 if (checkcollision(luftBallongPath, smiley.getPath(), e)) //Sjekker om man har kollidert med en Smiley
->>>>>>> f55e96a41d16e475dab292d2bc6235aef9fdb87a
+
                 {
                     int verdi = smileyListe[i].Verdi; //Finner verdien til diamanten
-<<<<<<< HEAD
+
                     smileyListe.RemoveAt(i); // fjerner diamanten når kollisjonen inntreffer 
                     poengsum += verdi;
                     if (smileyListe.Count < 1)
@@ -226,28 +226,15 @@ namespace Game
                         Clear();
                     }
                     
-=======
+
                     poengsum += verdi; //Legger til verdien til diamanten
->>>>>>> f55e96a41d16e475dab292d2bc6235aef9fdb87a
+
                 }
 
                 smiley.Draw(e.Graphics); //Kaller på tegne metoden for "Smileys"
             }
         }
 
-        // check for kollisjon mellom ballong og hinder
-        public bool checkCollisionHinder(GraphicsPath luftballongBilde, GraphicsPath hinderListe, PaintEventArgs e)
-        {
-            Region lb = new Region(luftballongBilde); 
-            Region hl = new Region(hinderListe);
-            lb.Intersect(hl);
-            if (!lb.IsEmpty(e.Graphics))
-            {
-                return true;
-            }
-            else
-                return false;
-        }
 
         // check for kollisjon mellom ballong og diamant 
         public bool checkcollision(GraphicsPath luftballongBilde, GraphicsPath smileyListe, PaintEventArgs e) 
@@ -302,6 +289,7 @@ namespace Game
             luftBallongPath.Reset();
             timer.Stop();
             
+            
 
             
         }
@@ -318,10 +306,10 @@ namespace Game
             Thread thread = new Thread(ts);
             thread.Start();
             thread.IsBackground = true;
-<<<<<<< HEAD
+            
 
-=======
->>>>>>> f55e96a41d16e475dab292d2bc6235aef9fdb87a
+
+
         }
 
         /// <summary>

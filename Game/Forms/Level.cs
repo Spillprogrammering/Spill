@@ -85,14 +85,14 @@ namespace Game
             }
             else // Hvis tiden har gått ut
             {
-<<<<<<< HEAD
+
                 timeLeftTimer.Stop();
                 lbGameOver.Focus();
                 sp.Play();
-=======
+
                 timeLeftTimer.Stop(); //stopper timeren
                 sp.Play(); //Spiller av Game over lyd
->>>>>>> f55e96a41d16e475dab292d2bc6235aef9fdb87a
+
                 this.lbGameOver.Visible = true;
 
                 level1Panel.Restart();

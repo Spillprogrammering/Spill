@@ -11,43 +11,46 @@ using System.Windows.Forms;
 
 namespace Game
 {
-    public partial class Level : Form 
+    /// <summary>
+    /// Klasse for hva som skjer i spillet
+    /// Kaller på metode i levelSpillPanel klassen som starter Invalidate() tråden.
+    /// @Author Halvard, Marcus, Bjørn
+    /// </summary>
+    public partial class Level : Form
     {
-        private DBConnect db = new DBConnect();
-        levelSpillPanel level1Panel = null;
-        int timeLeft; // Tid du har på deg til å fullføre brettet 
-        Button btnGameOver = new Button();
-        Label lgm = new Label();
-        string username; //Brukt til å sende med brukernavnet til databasen
+        #region Variabler
+        private DBConnect db = new DBConnect(); 
+        private levelSpillPanel level1Panel;
+        private int timeLeft; // Tid du har på deg til å fullføre brettet 
+        private Button btnGameOver = new Button();
+        private Label lgm = new Label();
+        private string username; //Brukt til å sende med brukernavnet til databasen
         private SoundPlayer sp = new SoundPlayer(Game.Properties.Resources.game_over);
+        #endregion
 
         //Konstruktør for Level formen
         public Level(Login _loginref, string _brukernavn)
         {
             InitializeComponent();
 
-            
             this.StartPosition = FormStartPosition.CenterScreen; //Setter startposisjonen på formen til å være midt på skjermen
             this.FormBorderStyle = FormBorderStyle.FixedSingle; //gjør slik at du ikke kan justere på størrelsen
 
-            level1Panel = new levelSpillPanel();
+            level1Panel = new levelSpillPanel(); //Oppretter ny SpillPanel klasse
             this.Controls.Add(level1Panel);
             
             lblBrukernavn.Text = "Brukernavn: " + _brukernavn; //Skriver brukernavnet du logget på med i labelen
             this.username = _brukernavn; //Henter ut brukernavnet
         }
 
-        /// <summary>
         /// Metode for hva som skjer når du lukker Formen
         /// Avslutter spillet
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Level_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit(); //Lukker applikasjonen ordentlig
         }
 
+        #region Buttons
         //Klikk metode for Help knappen
         private void btnHelp_Click(object sender, EventArgs e)
         {
@@ -68,8 +71,8 @@ namespace Game
             timeLeft = 10;
             timeLeftTimer.Enabled = true;
             timeLeftTimer.Start();
-
         }
+        #endregion
 
         // Timeren som holder rede på hvor lang tid du har igjen på å fullføre levelen sin Tick-metode
         private void timeLeftTimer_Tick(object sender, EventArgs e)
@@ -91,9 +94,6 @@ namespace Game
                 btnStartSpill.Enabled = true;
                 db.insertHiScore(username, level1Panel.GetPoengsum()); //Legger resultatet inn i Hiscore lista
             } 
-
         }
-
-
     }
 }

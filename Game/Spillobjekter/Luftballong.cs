@@ -9,6 +9,10 @@ using System.Windows.Forms;
 
 namespace Game
 {
+    /// <summary>
+    /// Luftballong klassen
+    /// @Author Halvard, Marcus, Bjørn
+    /// </summary>
     class Luftballong
     {
         //Medlemsvariabler
@@ -18,8 +22,8 @@ namespace Game
         public int bx { get; set; } //bevegelsesposisjon
         public int by { get; set; } //bevegelsesposisjon
         private GraphicsPath myPath;
-        
 
+        //Konstruktør
         public Luftballong(int _x, int _y, int _bx, int _by)
         {
             x = _x;
@@ -28,6 +32,7 @@ namespace Game
             by = _by;
         }
         
+        //Metoden for å tegne luftballongen
         public void Draw(Graphics g)
         {
             g.DrawImage(Game.Properties.Resources.luftbalong1, new Point(10,10));

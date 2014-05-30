@@ -10,6 +10,11 @@ using System.Windows.Forms;
 
 namespace Game
 {
+    /// <summary>
+    /// Klassen for Login-formen
+    /// Dette er startmenyen hvor du kan navigere deg til HiScore listen, Registrer bruker eller logge inn
+    /// @Author Halvard
+    /// </summary>
     public partial class Login : Form
     {
 
@@ -27,47 +32,48 @@ namespace Game
             this.FormBorderStyle = FormBorderStyle.FixedSingle; //gjør slik at du ikke kan justere på størrelsen
             InitializeComponent();
         }
-        /// <summary>
+
+        #region Knapper
         /// Klikk metode for login knappen
-        /// </summary>
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = tbLoginUsername.Text; //Henter tekst fra tekstboksene
             string password = tbLoginPassword.Text;
             db.loginCheck(this, username, password); //kaller på loginCheck metoden i DBConnect klassen og sender med brukernavn og passord
         }
-        /// <summary>
+        
         /// Klikk metode for Registreringsknappen
-        /// </summary>
         private void btnRegister_Click(object sender, EventArgs e)
         {
             this.Hide(); //Gjemmer Login formen
             this.regForm.Show(); //Viser Registreringsformen
         }
-        /// <summary>
-        /// Knapp som avslutter applikasjonen
-        /// </summary>
+        
+        /// Klikk metode for Avslutt knappen
         private void btnLoginExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.Exit(); //Avslutter applikasjonen
         }
+
+        //Klikk metode for Poengtavle knappen
+        private void btnHiScore_Click(object sender, EventArgs e)
+        {
+            hiScoreForm = new Forms.HiScore();
+            hiScoreForm.Show(); //Viser HiScore listen
+        }
+        #endregion
 
         /// <summary>
         /// Metode for hva som skal skje når login er unnagjort
         /// </summary>
         public void loginFinished()
         {
-            string brukernavn = tbLoginUsername.Text;
+            string brukernavn = tbLoginUsername.Text; //Henter ut brukernavnet fra tekstboksen
             Level form = new Level(this, brukernavn); //Oppretter Formen for spillet 
             form.Show(); //Viser spill formen
             this.Hide(); //Gjemmer Login formen
         }
 
-        //Klikk metode som viser Hi-Score lista
-        private void btnHiScore_Click(object sender, EventArgs e)
-        {
-            hiScoreForm = new Forms.HiScore();
-            hiScoreForm.Show();
-        }
+       
     }
 }

@@ -10,6 +10,11 @@ using System.Windows.Forms;
 
 namespace Game
 {
+    /// <summary>
+    /// Klasse for SpillInfo formen
+    /// Her står det info om spillet, for eksempel hva Smiley'ene er verdt
+    /// @Author Marcus
+    /// </summary>
     public partial class SpillInfo : Form
     {
 

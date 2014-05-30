@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace Game
 {
+    /// <summary>
+    /// Klasse for skytter-objektet
+    /// @Author Halvard, Marcus, Bjørn
+    /// </summary>
     class Skytter
     {
         //Medlemsvariabler

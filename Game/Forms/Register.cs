@@ -10,6 +10,12 @@ using System.Windows.Forms;
 
 namespace Game
 {
+    /// <summary>
+    /// Klasse for Registreringsformen
+    /// Her registrerer man seg, og så kaller på en metode i DBConnect som sjekker om brukernavnet finnes allerede
+    /// Hvis det ikke finnes fra før, blir man lagt til i databasen
+    /// @Author Halvard
+    /// </summary>
     public partial class Register : Form
     {
         private DBConnect db = new DBConnect();

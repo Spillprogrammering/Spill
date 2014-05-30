@@ -41,38 +41,34 @@
             // 
             this.lblVelkommen.AutoSize = true;
             this.lblVelkommen.BackColor = System.Drawing.Color.Transparent;
-            this.lblVelkommen.Location = new System.Drawing.Point(133, 65);
-            this.lblVelkommen.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVelkommen.Location = new System.Drawing.Point(100, 53);
             this.lblVelkommen.Name = "lblVelkommen";
-            this.lblVelkommen.Size = new System.Drawing.Size(81, 17);
+            this.lblVelkommen.Size = new System.Drawing.Size(62, 13);
             this.lblVelkommen.TabIndex = 0;
             this.lblVelkommen.Text = "Velkommen";
             // 
             // tbLoginUsername
             // 
-            this.tbLoginUsername.Location = new System.Drawing.Point(113, 105);
-            this.tbLoginUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbLoginUsername.Location = new System.Drawing.Point(85, 85);
             this.tbLoginUsername.Name = "tbLoginUsername";
-            this.tbLoginUsername.Size = new System.Drawing.Size(132, 22);
+            this.tbLoginUsername.Size = new System.Drawing.Size(100, 20);
             this.tbLoginUsername.TabIndex = 1;
             this.tbLoginUsername.Text = "Marcus";
             // 
             // tbLoginPassword
             // 
-            this.tbLoginPassword.Location = new System.Drawing.Point(113, 138);
-            this.tbLoginPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbLoginPassword.Location = new System.Drawing.Point(85, 112);
             this.tbLoginPassword.Name = "tbLoginPassword";
             this.tbLoginPassword.PasswordChar = '*';
-            this.tbLoginPassword.Size = new System.Drawing.Size(132, 22);
+            this.tbLoginPassword.Size = new System.Drawing.Size(100, 20);
             this.tbLoginPassword.TabIndex = 2;
             this.tbLoginPassword.Text = "marcus";
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(113, 171);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogin.Location = new System.Drawing.Point(85, 139);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(133, 28);
+            this.btnLogin.Size = new System.Drawing.Size(100, 23);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Logg inn";
             this.btnLogin.UseVisualStyleBackColor = true;
@@ -80,10 +76,9 @@
             // 
             // btnRegister
             // 
-            this.btnRegister.Location = new System.Drawing.Point(113, 207);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegister.Location = new System.Drawing.Point(85, 168);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(133, 28);
+            this.btnRegister.Size = new System.Drawing.Size(100, 23);
             this.btnRegister.TabIndex = 4;
             this.btnRegister.Text = "Registrer deg";
             this.btnRegister.UseVisualStyleBackColor = true;
@@ -91,10 +86,9 @@
             // 
             // btnLoginExit
             // 
-            this.btnLoginExit.Location = new System.Drawing.Point(113, 277);
-            this.btnLoginExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLoginExit.Location = new System.Drawing.Point(85, 225);
             this.btnLoginExit.Name = "btnLoginExit";
-            this.btnLoginExit.Size = new System.Drawing.Size(133, 28);
+            this.btnLoginExit.Size = new System.Drawing.Size(100, 23);
             this.btnLoginExit.TabIndex = 5;
             this.btnLoginExit.Text = "Avslutt";
             this.btnLoginExit.UseVisualStyleBackColor = true;
@@ -102,10 +96,9 @@
             // 
             // btnHiScore
             // 
-            this.btnHiScore.Location = new System.Drawing.Point(113, 242);
-            this.btnHiScore.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnHiScore.Location = new System.Drawing.Point(85, 197);
             this.btnHiScore.Name = "btnHiScore";
-            this.btnHiScore.Size = new System.Drawing.Size(133, 27);
+            this.btnHiScore.Size = new System.Drawing.Size(100, 22);
             this.btnHiScore.TabIndex = 6;
             this.btnHiScore.Text = "Poengtavle";
             this.btnHiScore.UseVisualStyleBackColor = true;
@@ -113,10 +106,10 @@
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Game.Properties.Resources.LoginBakgrunn;
-            this.ClientSize = new System.Drawing.Size(356, 355);
+            this.ClientSize = new System.Drawing.Size(267, 288);
             this.Controls.Add(this.btnHiScore);
             this.Controls.Add(this.btnLoginExit);
             this.Controls.Add(this.btnRegister);
@@ -124,7 +117,6 @@
             this.Controls.Add(this.tbLoginPassword);
             this.Controls.Add(this.tbLoginUsername);
             this.Controls.Add(this.lblVelkommen);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Login";
             this.Text = "Ballongferden";
             this.ResumeLayout(false);

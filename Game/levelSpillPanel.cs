@@ -56,13 +56,14 @@ namespace Game
             
         }
 
-
+        #region Tegning av brett
         /// <summary>
         /// Metode som oppretter figurer og legger dem i en liste
         /// </summary>
         public void tegnFigurer()
         {
             if (brettnummer == 1) {
+            //Level 1
 
             //luftballongen
             luftballongBilde.Image = Game.Properties.Resources.luftbalong1;
@@ -77,6 +78,7 @@ namespace Game
             hinderListe.Add(new Hinder(175, 250, 30, 30, 2)); 
             hinderListe.Add(new Hinder(300, 250, 400, 250)); 
             hinderListe.Add(new Hinder(620, 30, 50, 50, 2)); 
+
             //Smileys
             smileyListe.Add(new Smiley(170, 35, 50, 50, -60, -60, 1));
             smileyListe.Add(new Smiley(75, 250, 50, 50, -60, -60, 1));
@@ -84,9 +86,11 @@ namespace Game
             smileyListe.Add(new Smiley(30, 450, 50, 50, -60, -60, 2));
             smileyListe.Add(new Smiley(500, 100, 50, 50, -60, -60, 2));
             smileyListe.Add(new Smiley(632, 270, 50, 50, -60, -60, 3));
+
             //Skyttere            
             skytterListe.Add(new Skytter(155, 430, 80, 80, 70, 40));
             skytterListe.Add(new Skytter(610, 430, 80, 80, 70, 40));
+
             // Kuler
             kuleListe.Add(new Kule(193, 470, 5, 1));
             kuleListe.Add(new Kule(648, 470, 5, 1));
@@ -183,10 +187,10 @@ namespace Game
             if (brettnummer == 4)
             {
                 MessageBox.Show("Du har fullført spillet!", "Gratulerer!");
+                //Her skal resultatet ditt slenges inn i databasen
             }
-
-
         }
+        #endregion
 
         /// <summary>
         /// Overstyrer OnPaint metoden

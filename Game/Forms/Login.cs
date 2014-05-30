@@ -33,7 +33,7 @@ namespace Game
             InitializeComponent();
         }
 
-        #region Knapper
+        #region Klikk metoder for knappene
         /// Klikk metode for login knappen
         private void btnLogin_Click(object sender, EventArgs e)
         {

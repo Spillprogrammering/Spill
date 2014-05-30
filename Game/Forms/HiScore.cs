@@ -12,7 +12,8 @@ namespace Game.Forms
 {
     /// <summary>
     /// Form som viser Hiscore lista
-    /// Inneholder kun en DataGridView som henter ut fra databasen
+    /// Inneholder kun en DataGridView med et dataset som henter ut Hiscore-listen fra databasen
+    /// Også en adapter for å koble sammen dataset'et med gridviewen
     /// 
     /// Spørringen som sendes mot databasen ser slik ut:
     /// SELECT Username, `Date`, Score FROM Hiscore ORDER BY Score DESC

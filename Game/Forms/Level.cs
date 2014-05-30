@@ -19,11 +19,9 @@ namespace Game
     public partial class Level : Form
     {
         #region Variabler
-        private DBConnect db = new DBConnect(); 
+         
         private levelSpillPanel level1Panel;
         private int timeLeft; // Tid du har på deg til å fullføre brettet 
-        private Button btnGameOver = new Button();
-        private Label lgm = new Label();
         private string username; //Brukt til å sende med brukernavnet til databasen
         private SoundPlayer sp = new SoundPlayer(Game.Properties.Resources.game_over);
         #endregion
@@ -38,7 +36,7 @@ namespace Game
 
             level1Panel = new levelSpillPanel(); //Oppretter ny SpillPanel klasse
             this.Controls.Add(level1Panel);
-            
+
             lblBrukernavn.Text = "Brukernavn: " + _brukernavn; //Skriver brukernavnet du logget på med i labelen
             this.username = _brukernavn; //Henter ut brukernavnet
         }
@@ -66,7 +64,7 @@ namespace Game
             lbGameOver.Visible = false;
             btnStartSpill.Enabled = false;
             level1Panel.Restart();
-            timeLeft = 10;
+            timeLeft = 100;
             timeLeftTimer.Enabled = true;
             timeLeftTimer.Start();
         }
@@ -96,7 +94,6 @@ namespace Game
                 level1Panel.Restart();
 
                 btnStartSpill.Enabled = true;
-                db.insertHiScore(username, level1Panel.GetPoengsum()); //Legger resultatet inn i Hiscore lista
             } 
         }
     }

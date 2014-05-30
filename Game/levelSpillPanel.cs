@@ -31,7 +31,6 @@ namespace Game
 
         private bool running = false; //Boolsk variabel som skal brukes til å sjekke om spillet kjører eller ikke
         private System.Windows.Forms.Timer timer; //timer brukt til gravitasjon
-        Button btnStartSpill = new System.Windows.Forms.Button();
         private static int poengsum;
         private GraphicsPath luftBallongPath = new GraphicsPath();
         private int brettnummer = 1;
@@ -40,6 +39,7 @@ namespace Game
         //Konstruktør for spillpanelet
         public levelSpillPanel()
         {
+
             //Fjerner "blinking" når spillet tegnes
             this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
             this.UpdateStyles();
@@ -53,11 +53,7 @@ namespace Game
             timer.Enabled = true;
             timer.Start();
 
-            //Legger til luftballongen
-            luftballongBilde.Image = Game.Properties.Resources.luftbalong1;
-            luftballongBilde.Size = new System.Drawing.Size(31, 60); //setter størrelsen på luftballong bildet
-            luftballongBilde.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.Controls.Add(luftballongBilde);
+            
         }
 
 
@@ -66,7 +62,13 @@ namespace Game
         /// </summary>
         public void tegnFigurer()
         {
-            if (brettnummer == 1) { 
+            if (brettnummer == 1) {
+
+            //luftballongen
+            luftballongBilde.Image = Game.Properties.Resources.luftbalong1;
+            luftballongBilde.Size = new System.Drawing.Size(31, 60); //setter størrelsen på luftballong bildet
+            luftballongBilde.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.Controls.Add(luftballongBilde);
             
             //Hindere
             hinderListe.Add(new Hinder(120, 0, 20, 100, 1)); 
@@ -93,6 +95,13 @@ namespace Game
 
             if (brettnummer == 2) { 
             //Level 2
+
+            //luftballongen
+            luftballongBilde.Image = Game.Properties.Resources.luftbalong1;
+            luftballongBilde.Size = new System.Drawing.Size(31, 60); //setter størrelsen på luftballong bildet
+            luftballongBilde.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.Controls.Add(luftballongBilde);
+
             // Hindre
             hinderListe.Add(new Hinder(150, 250, 300, 80, 1));
             hinderListe.Add(new Hinder(550, 250, 300, 80, 1));
@@ -127,6 +136,13 @@ namespace Game
 
             if (brettnummer == 3) { 
             // Level 3
+
+            //luftballongen
+            luftballongBilde.Image = Game.Properties.Resources.luftbalong1;
+            luftballongBilde.Size = new System.Drawing.Size(31, 60); //setter størrelsen på luftballong bildet
+            luftballongBilde.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.Controls.Add(luftballongBilde);
+
             // Hindre
             hinderListe.Add(new Hinder(220, 250, 250, 80, 1));
             hinderListe.Add(new Hinder(530, 250, 250, 80, 1));
@@ -163,6 +179,10 @@ namespace Game
             kuleListe.Add(new Kule(992, 198, 5, 3));
             kuleListe.Add(new Kule(992, 368, 5, 3));
 
+            }
+            if (brettnummer == 4)
+            {
+                MessageBox.Show("Du har fullført spillet!", "Gratulerer!");
             }
 
 
@@ -302,7 +322,6 @@ namespace Game
             brettnummer++;
             Restart();
             tegnFigurer();
-            luftballongBilde.Location = new Point(10, 10); //Setter posisjonen til luftballongen
         }
 
         /// <summary>
@@ -310,7 +329,7 @@ namespace Game
         /// </summary>
         public void start()
         {
-            running = true;
+            running = true; 
             timer.Enabled = true; 
             timer.Start(); //Starter timeren som styrer gravitasjonen
             ThreadStart ts = new ThreadStart(Run);
@@ -349,7 +368,6 @@ namespace Game
                 if (luftballong.x > 0)
                 {
                     luftballong.x -= luftballong.bx;
-                    this.Invalidate();
                 }
             }
             else if (keyData == Keys.Right)
@@ -357,7 +375,6 @@ namespace Game
                 if (luftballong.x < this.Width - 32)
                 {
                     luftballong.x += luftballong.bx;
-                    this.Invalidate();
                 }
             }
             else if (keyData == Keys.Up)
@@ -365,7 +382,6 @@ namespace Game
                 if (luftballong.y > 2)
                 {
                     luftballong.y -= luftballong.by;
-                    this.Invalidate();
                 }
             }
             else if (keyData == Keys.Down)
@@ -373,7 +389,6 @@ namespace Game
                 if (luftballong.y < this.Height - 68)
                 {
                     luftballong.y += luftballong.by;
-                    this.Invalidate();
                 }
             } 
 
@@ -397,8 +412,8 @@ namespace Game
         
         public void Restart()
         {
+            timer.Start();
             luftballongBilde.Location = new Point(luftballong.x + 10, luftballong.y + 10);
-            poengsum = 0;
             Invalidate();
         }
 

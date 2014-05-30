@@ -60,7 +60,7 @@ namespace Game
             lbGameOver.Visible = false;
             btnStartSpill.Enabled = false;
             
-            timeLeft = 10;
+            timeLeft = 60;
             timeLeftTimer.Enabled = true;
             timeLeftTimer.Start();
 
@@ -81,7 +81,7 @@ namespace Game
             else
             {
                 timeLeftTimer.Stop();
-                timeLeftTimer.Stop();
+                lbGameOver.Focus();
                 sp.Play();
                 this.lbGameOver.Visible = true;
 

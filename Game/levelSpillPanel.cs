@@ -21,17 +21,19 @@ namespace Game
         private Luftballong luftballong = new Luftballong(10,10,2,3); //Luftballong
         private PictureBox luftballongBilde = new PictureBox();
         private SoundPlayer sp = new SoundPlayer(Game.Properties.Resources.gatherGemSound); //Lyd når du plukker opp samleobjekt (diamant)
+
         private List<Hinder> hinderListe = new List<Hinder>(); //Liste som tar vare på alle Hinder-objekter
         private List<Skytter> skytterListe = new List<Skytter>(); //Liste som tar vare på alle Skyttere
         private List<Smiley> smileyListe = new List<Smiley>(); //Liste som tar vare på alle smileyfjes
+
         private bool running = false; //Boolsk variabel som skal brukes til å sjekke om spillet kjører eller ikke
         private System.Windows.Forms.Timer timer; //timer brukt til gravitasjon
         Button btnStartSpill = new System.Windows.Forms.Button();
         private static int poengsum;
         private GraphicsPath luftBallongPath = new GraphicsPath();
-        #endregion
+        private int brettnummer = 1;
         private Level level;
-
+        #endregion
 
         //Konstruktør for spillpanelet
         public levelSpillPanel()
@@ -62,17 +64,8 @@ namespace Game
         /// </summary>
         public void tegnFigurer()
         {
-
-            /*
-            //Legg til hindere, skyttere og smilefjes i lister HUSK LAG METODE FOR Å LEGGE ALLE HINDERE/SKYTTERE/SMILEYS I LISTE. OBJEKTORIENTERT!!!!!
-            hinderListe.Add(new Hinder(120, 0, 20, 100, 1)); //rektangel til høyre for ballongen
-            hinderListe.Add(new Hinder(0, 160, 20, 10, 1)); //rektangel under ballongen
-            hinderListe.Add(new Hinder(240, 0, 20, 100, 1)); //rektangel nr. 2 til høyre for ballongen
-            hinderListe.Add(new Hinder(175, 250, 30, 30, 2)); //sirkelen
-            hinderListe.Add(new Hinder(300, 250, 400, 250)); //Funky figur
-            hinderListe.Add(new Hinder(620, 30, 50, 50, 2)); //sirkelen oppi høyre hjørnet
-
-
+            if (brettnummer == 1) { 
+            
             //Hindere
             hinderListe.Add(new Hinder(120, 0, 20, 100, 1)); 
             hinderListe.Add(new Hinder(0, 160, 20, 10, 1));
@@ -91,9 +84,11 @@ namespace Game
             //Skyttere            
             skytterListe.Add(new Skytter(155, 430, 80, 80, 70, 40));
             skytterListe.Add(new Skytter(610, 430, 80, 80, 70, 40));
-            */
+            
+            }
 
-            /* Level 2
+            if (brettnummer == 2) { 
+            //Level 2
             hinderListe.Add(new Hinder(150, 250, 300, 80, 1));
             hinderListe.Add(new Hinder(550, 250, 300, 80, 1));
             hinderListe.Add(new Hinder(10, 200, 200, 200, 2));
@@ -115,8 +110,11 @@ namespace Game
             skytterListe.Add(new Skytter(300, 0, 80, 80, -70, -40));
             skytterListe.Add(new Skytter(600, 0, 80, 80, -70, -40));
             skytterListe.Add(new Skytter(300, 545, 80, 80, 70, 40));
-            skytterListe.Add(new Skytter(600, 545, 80, 80, 70, 40)); */
+            skytterListe.Add(new Skytter(600, 545, 80, 80, 70, 40)); 
 
+            }
+
+            if (brettnummer == 3) { 
             // Level 3
             hinderListe.Add(new Hinder(220, 250, 250, 80, 1));
             hinderListe.Add(new Hinder(530, 250, 250, 80, 1));
@@ -141,8 +139,8 @@ namespace Game
             skytterListe.Add(new Skytter(955, 160, 80, 80, 340, 40));
             skytterListe.Add(new Skytter(0, 330, 80, 80, 160, 40));
             skytterListe.Add(new Skytter(955, 330, 80, 80, 340, 40));
-            
-            
+
+            }
 
 
         }
@@ -184,13 +182,6 @@ namespace Game
 
                 
 
-                if (checkCollisionHinder(luftBallongPath, hinder.getPath(), e)) //Kaller på metoden som sjekker om luftballong kolliderer med smiley
-                {
-                    
-                }
-                hinder.Draw(e.Graphics);
-
-
                 if (checkCollisionHinder(luftBallongPath, hinder.getPath(), e)) //Kaller på metoden som sjekker om luftballong kolliderer med hinder
                 {
                     //Gjør ingenting atm, for det er en bug
@@ -211,8 +202,6 @@ namespace Game
                 Smiley smiley = smileyListe[i];
 
                 
-                if (checkcollision(luftBallongPath, smiley.getPath(), e))
-
 
                 if (checkcollision(luftBallongPath, smiley.getPath(), e)) //Sjekker om man har kollidert med en Smiley
 
@@ -225,9 +214,6 @@ namespace Game
                     {
                         Clear();
                     }
-                    
-
-                    poengsum += verdi; //Legger til verdien til diamanten
 
                 }
 
@@ -288,10 +274,10 @@ namespace Game
             skytterListe.Clear();
             luftBallongPath.Reset();
             timer.Stop();
-            
-            
-
-            
+            brettnummer++;
+            Restart();
+            tegnFigurer();
+            luftballongBilde.Location = new Point(10, 10); //Setter posisjonen til luftballongen
         }
 
         /// <summary>
@@ -306,10 +292,6 @@ namespace Game
             Thread thread = new Thread(ts);
             thread.Start();
             thread.IsBackground = true;
-            
-
-
-
         }
 
         /// <summary>
@@ -328,7 +310,7 @@ namespace Game
             }
         }
 
-
+        #region Bevegelse av luftballong
         /// <summary>
         /// Metode for bevegelse av luftballong
         /// </summary>
@@ -372,6 +354,7 @@ namespace Game
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
+        #endregion
 
         #region Poengsum
         // "Get"-metode, brukes til å skrive inn poengsummen i label

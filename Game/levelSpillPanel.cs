@@ -65,6 +65,17 @@ namespace Game
         /// </summary>
         public void tegnFigurer()
         {
+
+            /*
+            //Legg til hindere, skyttere og smilefjes i lister HUSK LAG METODE FOR Å LEGGE ALLE HINDERE/SKYTTERE/SMILEYS I LISTE. OBJEKTORIENTERT!!!!!
+            hinderListe.Add(new Hinder(120, 0, 20, 100, 1)); //rektangel til høyre for ballongen
+            hinderListe.Add(new Hinder(0, 160, 20, 10, 1)); //rektangel under ballongen
+            hinderListe.Add(new Hinder(240, 0, 20, 100, 1)); //rektangel nr. 2 til høyre for ballongen
+            hinderListe.Add(new Hinder(175, 250, 30, 30, 2)); //sirkelen
+            hinderListe.Add(new Hinder(300, 250, 400, 250)); //Funky figur
+            hinderListe.Add(new Hinder(620, 30, 50, 50, 2)); //sirkelen oppi høyre hjørnet
+
+
             //Hindere
             hinderListe.Add(new Hinder(120, 0, 20, 100, 1)); 
             hinderListe.Add(new Hinder(0, 160, 20, 10, 1));
@@ -73,6 +84,7 @@ namespace Game
             hinderListe.Add(new Hinder(300, 250, 400, 250)); 
             hinderListe.Add(new Hinder(620, 30, 50, 50, 2)); 
             //Smileys
+
             smileyListe.Add(new Smiley(170, 35, 50, 50, -60, -60, 1));
             smileyListe.Add(new Smiley(75, 250, 50, 50, -60, -60, 1));
             smileyListe.Add(new Smiley(318, 220, 50, 50, -60, -60, 1));
@@ -82,10 +94,81 @@ namespace Game
             //Skyttere            
             skytterListe.Add(new Skytter(155, 430, 80, 80, 70, 40));
             skytterListe.Add(new Skytter(610, 430, 80, 80, 70, 40));
+
             //Kuler
             kuleListe.Add(new Kule(193, 470,5, 1));
             kuleListe.Add(new Kule(648, 470, 5, 1));
+
+            */
+
+            /* Level 2
+            hinderListe.Add(new Hinder(150, 250, 300, 80, 1));
+            hinderListe.Add(new Hinder(550, 250, 300, 80, 1));
+            hinderListe.Add(new Hinder(10, 200, 200, 200, 2));
+            hinderListe.Add(new Hinder(825, 200, 200, 200, 2));
+            hinderListe.Add(new Hinder(460, 0, 80, 150, 1));
+            hinderListe.Add(new Hinder(460, 425, 80, 250, 1));
+
+            
+            smileyListe.Add(new Smiley(420, 10, 50, 50, -60, -60, 1));
+            smileyListe.Add(new Smiley(530, 10, 50, 50, -60, -60, 1));
+            smileyListe.Add(new Smiley(420, 575, 50, 50, -60, -60, 1));
+            smileyListe.Add(new Smiley(530, 580, 50, 50, -60, -60, 1));
+            smileyListe.Add(new Smiley(480, 275, 50, 50, -60, -60, 3));
+            smileyListe.Add(new Smiley(200, 500, 50, 50, -60, -60, 2));
+            smileyListe.Add(new Smiley(700, 500, 50, 50, -60, -60, 2));
+            smileyListe.Add(new Smiley(700, 100, 50, 50, -60, -60, 2));
+            
+
+            skytterListe.Add(new Skytter(300, 0, 80, 80, -70, -40));
+            skytterListe.Add(new Skytter(600, 0, 80, 80, -70, -40));
+            skytterListe.Add(new Skytter(300, 545, 80, 80, 70, 40));
+            skytterListe.Add(new Skytter(600, 545, 80, 80, 70, 40)); */
+
+            // Level 3
+            hinderListe.Add(new Hinder(220, 250, 250, 80, 1));
+            hinderListe.Add(new Hinder(530, 250, 250, 80, 1));
+            hinderListe.Add(new Hinder(460, 100, 80, 200, 1));
+            hinderListe.Add(new Hinder(460, 275, 80, 200, 1));
+
+            smileyListe.Add(new Smiley(390, 190, 50, 50, -60, -60, 1));
+            smileyListe.Add(new Smiley(550, 190, 50, 50, -60, -60, 1));
+            smileyListe.Add(new Smiley(390, 360, 50, 50, -60, -60, 1));
+            smileyListe.Add(new Smiley(550, 360, 50, 50, -60, -60, 1));
+            smileyListe.Add(new Smiley(475, 55, 50, 50, -60, -60, 2));
+            smileyListe.Add(new Smiley(475, 500, 50, 50, -60, -60, 2));
+            smileyListe.Add(new Smiley(160, 275, 50, 50, -60, -60, 3));
+            smileyListe.Add(new Smiley(785, 275, 50, 50, -60, -60, 3));
+
+
+            skytterListe.Add(new Skytter(80, 0, 80, 80, -70, -40));
+            skytterListe.Add(new Skytter(135, 545, 80, 80, 70, 40));
+            skytterListe.Add(new Skytter(850, 0, 80, 80, -70, -40));
+            skytterListe.Add(new Skytter(770, 545, 80, 80, 70, 40));
+            skytterListe.Add(new Skytter(0, 160, 80, 80, 160, 40));
+            skytterListe.Add(new Skytter(955, 160, 80, 80, 340, 40));
+            skytterListe.Add(new Skytter(0, 330, 80, 80, 160, 40));
+            skytterListe.Add(new Skytter(955, 330, 80, 80, 340, 40));
+            
+            
+
+
+
         }
+
+     /*   public void tegnFigurer()
+        {
+            hinderListe.Add(new Hinder(300, 400, 80, 30, 1));
+            hinderListe.Add(new Hinder(500, 400, 80, 30, 1));
+            hinderListe.Add(new Hinder(300, 400, 30, 30, 2));
+            hinderListe.Add(new Hinder(600, 400, 30, 30, 2));
+
+            smileyListe.Add(new Smiley(170, 35, 50, 50, -60, -60, 1));
+
+            skytterListe.Add(new Skytter(155, 430, 80, 80, 70, 40));
+            skytterListe.Add(new Skytter(610, 430, 80, 80, 70, 40));
+
+        } */
 
         /// <summary>
         /// Overstyrer OnPaint metoden
@@ -100,13 +183,22 @@ namespace Game
             Rectangle rec = new Rectangle(luftballong.x - 40, luftballong.y - 30, 10, 40); // Setter størrelsen på rektangelet i diamantene
             luftBallongPath.StartFigure();
             luftBallongPath.AddRectangle(rec);
-            luftBallongPath.CloseFigure();
+            luftBallongPath.CloseFigure(); 
 
             //Går igjennom listene med figurer og tegner dem
             //Hinderlisten
             for (int i = 0; i < hinderListe.Count; i++) 
             {
                 Hinder hinder = hinderListe[i];
+
+                
+
+                if (checkCollisionHinder(luftBallongPath, hinder.getPath(), e)) //Kaller på metoden som sjekker om luftballong kolliderer med smiley
+                {
+                    
+                }
+                hinder.Draw(e.Graphics);
+
 
 
                 if (checkCollisionHinder(luftBallongPath, hinder.getPath(), e)) //Kaller på metoden som sjekker om luftballong kolliderer med hinder
@@ -115,6 +207,7 @@ namespace Game
                 }
 
                 hinder.Draw(e.Graphics); //Kaller på tegne metoden for hinder
+
             }
             //Skytterlisten
             for (int i = 0; i < skytterListe.Count; i++)
@@ -127,11 +220,25 @@ namespace Game
             {
                 Smiley smiley = smileyListe[i];
 
+                
+                if (checkcollision(luftBallongPath, smiley.getPath(), e))
+
+
                 if (checkcollision(luftBallongPath, smiley.getPath(), e)) //Sjekker om man har kollidert med en Smiley
+
                 {
-                    smileyListe.RemoveAt(i); // fjerner diamanten når kollisjonen inntreffer 
                     int verdi = smileyListe[i].Verdi; //Finner verdien til diamanten
+
+                    smileyListe.RemoveAt(i); // fjerner diamanten når kollisjonen inntreffer 
+                    poengsum += verdi;
+                    if (smileyListe.Count < 1)
+                    {
+                        Clear();
+                    }
+                    
+
                     poengsum += verdi; //Legger til verdien til diamanten
+
                 }
 
                 smiley.Draw(e.Graphics); //Kaller på tegne metoden for "Smileys"
@@ -197,18 +304,21 @@ namespace Game
 
         // check for kollisjon mellom ballong og diamant 
         public bool checkcollision(GraphicsPath luftballongBilde, GraphicsPath smileyListe, PaintEventArgs e) 
-        { 
+        {
+            
             Region lb = new Region(luftballongBilde); 
             Region sl = new Region(smileyListe); 
             lb.Intersect(sl);
             if (!lb.IsEmpty(e.Graphics)) 
             {
+                
                 sp.Play();
                 return true;
             }
             else
                 return false;
         }
+
 
         /*
         public kollisjonSjekk(GraphicsPath luftballongBilde, GraphicsPath smileyListe, GraphicsPath hinderListe, GraphicsPath kuleListe, PaintEventArgs e)
@@ -230,9 +340,23 @@ namespace Game
         {
             while (running)
             {
+
                 this.Invalidate();
                 Thread.Sleep(17);
+                
             }
+        }
+        // Rensker alt som er tegnet -Marcus
+        public void Clear()
+        {
+            hinderListe.Clear();
+            smileyListe.Clear();
+            skytterListe.Clear();
+            luftBallongPath.Reset();
+            timer.Stop();
+            
+
+            
         }
 
         /// <summary>
@@ -247,6 +371,7 @@ namespace Game
             Thread thread = new Thread(ts);
             thread.Start();
             thread.IsBackground = true;
+
         }
 
         /// <summary>

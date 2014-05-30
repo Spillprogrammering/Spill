@@ -68,7 +68,7 @@ namespace Game
             level1Panel.Restart();
             timeLeft = 300;
             
-            timeLeft = 10;
+            timeLeft = 60;
             timeLeftTimer.Enabled = true;
             timeLeftTimer.Start();
         }
@@ -85,6 +85,11 @@ namespace Game
             }
             else // Hvis tiden har gått ut
             {
+
+                timeLeftTimer.Stop();
+                lbGameOver.Focus();
+                sp.Play();
+
                 timeLeftTimer.Stop(); //stopper timeren
                 sp.Play(); //Spiller av Game over lyd
                 this.lbGameOver.Visible = true;

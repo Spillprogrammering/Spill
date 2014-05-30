@@ -9,6 +9,7 @@ using System.Drawing.Drawing2D;
 using System.Threading;
 using System.Media;
 using Game.Forms;
+using Game.Spillobjekter;
 
 namespace Game
 {
@@ -26,6 +27,7 @@ namespace Game
         private List<Hinder> hinderListe = new List<Hinder>(); //Liste som tar vare på alle Hinder-objekter
         private List<Skytter> skytterListe = new List<Skytter>(); //Liste som tar vare på alle Skyttere
         private List<Smiley> smileyListe = new List<Smiley>(); //Liste som tar vare på alle smileyfjes
+        private List<Kule> kuleListe = new List<Kule>(); // Liste som tar vare på alle kulene
 
         private bool running = false; //Boolsk variabel som skal brukes til å sjekke om spillet kjører eller ikke
         private System.Windows.Forms.Timer timer; //timer brukt til gravitasjon
@@ -33,7 +35,6 @@ namespace Game
         private static int poengsum;
         private GraphicsPath luftBallongPath = new GraphicsPath();
         private int brettnummer = 1;
-        private Level level;
         #endregion
 
         //Konstruktør for spillpanelet
@@ -75,7 +76,6 @@ namespace Game
             hinderListe.Add(new Hinder(300, 250, 400, 250)); 
             hinderListe.Add(new Hinder(620, 30, 50, 50, 2)); 
             //Smileys
-
             smileyListe.Add(new Smiley(170, 35, 50, 50, -60, -60, 1));
             smileyListe.Add(new Smiley(75, 250, 50, 50, -60, -60, 1));
             smileyListe.Add(new Smiley(318, 220, 50, 50, -60, -60, 1));
@@ -85,11 +85,15 @@ namespace Game
             //Skyttere            
             skytterListe.Add(new Skytter(155, 430, 80, 80, 70, 40));
             skytterListe.Add(new Skytter(610, 430, 80, 80, 70, 40));
+            // Kuler
+            kuleListe.Add(new Kule(193, 470, 5, 1));
+            kuleListe.Add(new Kule(648, 470, 5, 1));
             
             }
 
             if (brettnummer == 2) { 
             //Level 2
+            // Hindre
             hinderListe.Add(new Hinder(150, 250, 300, 80, 1));
             hinderListe.Add(new Hinder(550, 250, 300, 80, 1));
             hinderListe.Add(new Hinder(10, 200, 200, 200, 2));
@@ -97,7 +101,7 @@ namespace Game
             hinderListe.Add(new Hinder(460, 0, 80, 150, 1));
             hinderListe.Add(new Hinder(460, 425, 80, 250, 1));
 
-            
+            // Diamanter
             smileyListe.Add(new Smiley(420, 10, 50, 50, -60, -60, 1));
             smileyListe.Add(new Smiley(530, 10, 50, 50, -60, -60, 1));
             smileyListe.Add(new Smiley(420, 575, 50, 50, -60, -60, 1));
@@ -107,21 +111,29 @@ namespace Game
             smileyListe.Add(new Smiley(700, 500, 50, 50, -60, -60, 2));
             smileyListe.Add(new Smiley(700, 100, 50, 50, -60, -60, 2));
             
-
+            // Skyttere
             skytterListe.Add(new Skytter(300, 0, 80, 80, -70, -40));
             skytterListe.Add(new Skytter(600, 0, 80, 80, -70, -40));
             skytterListe.Add(new Skytter(300, 545, 80, 80, 70, 40));
             skytterListe.Add(new Skytter(600, 545, 80, 80, 70, 40)); 
 
+            // Kuler
+            kuleListe.Add(new Kule(338, 40, 5, 4));
+            kuleListe.Add(new Kule(638, 40, 5, 4));
+            kuleListe.Add(new Kule(338, 585, 5, 1));
+            kuleListe.Add(new Kule(638, 585, 5, 1));
+
             }
 
             if (brettnummer == 3) { 
             // Level 3
+            // Hindre
             hinderListe.Add(new Hinder(220, 250, 250, 80, 1));
             hinderListe.Add(new Hinder(530, 250, 250, 80, 1));
             hinderListe.Add(new Hinder(460, 100, 80, 200, 1));
             hinderListe.Add(new Hinder(460, 275, 80, 200, 1));
 
+            // Diamanter
             smileyListe.Add(new Smiley(390, 190, 50, 50, -60, -60, 1));
             smileyListe.Add(new Smiley(550, 190, 50, 50, -60, -60, 1));
             smileyListe.Add(new Smiley(390, 360, 50, 50, -60, -60, 1));
@@ -131,7 +143,7 @@ namespace Game
             smileyListe.Add(new Smiley(160, 275, 50, 50, -60, -60, 3));
             smileyListe.Add(new Smiley(785, 275, 50, 50, -60, -60, 3));
 
-
+            // Skyttere
             skytterListe.Add(new Skytter(80, 0, 80, 80, -70, -40));
             skytterListe.Add(new Skytter(135, 545, 80, 80, 70, 40));
             skytterListe.Add(new Skytter(850, 0, 80, 80, -70, -40));
@@ -140,6 +152,16 @@ namespace Game
             skytterListe.Add(new Skytter(955, 160, 80, 80, 340, 40));
             skytterListe.Add(new Skytter(0, 330, 80, 80, 160, 40));
             skytterListe.Add(new Skytter(955, 330, 80, 80, 340, 40));
+
+            // Kuler
+            kuleListe.Add(new Kule(118, 40, 5, 4));
+            kuleListe.Add(new Kule(888, 40, 5, 4));
+            kuleListe.Add(new Kule(173, 585, 5, 1));
+            kuleListe.Add(new Kule(808, 585, 5, 1));
+            kuleListe.Add(new Kule(40, 198, 5, 2));
+            kuleListe.Add(new Kule(40, 368, 5, 2));
+            kuleListe.Add(new Kule(992, 198, 5, 3));
+            kuleListe.Add(new Kule(992, 368, 5, 3));
 
             }
 
@@ -166,9 +188,6 @@ namespace Game
             for (int i = 0; i < hinderListe.Count; i++) 
             {
                 Hinder hinder = hinderListe[i];
-
-                
-
                 if (checkCollisionHinder(luftBallongPath, hinder.getPath(), e)) //Kaller på metoden som sjekker om luftballong kolliderer med hinder
                 {
                     //Gjør ingenting atm, for det er en bug
@@ -187,11 +206,7 @@ namespace Game
             for (int i = 0; i < smileyListe.Count; i++)
             {
                 Smiley smiley = smileyListe[i];
-
-                
-
                 if (checkcollision(luftBallongPath, smiley.getPath(), e)) //Sjekker om man har kollidert med en Smiley
-
                 {
                     int verdi = smileyListe[i].Verdi; //Finner verdien til diamanten
                     poengsum += verdi;
@@ -201,10 +216,33 @@ namespace Game
                     {
                         Clear();
                     }
-
                 }
 
                 smiley.Draw(e.Graphics); //Kaller på tegne metoden for "Smileys"
+            }
+
+            //Kulelisten
+            for (int i = 0; i < kuleListe.Count; i++)
+            {
+                Kule kule = kuleListe[i];
+                
+                // Sjekk for hvilken rettning kulen skal skytes
+                if (kule.Retning == 1)
+                {
+                    kule.TegnOpp(e.Graphics);
+                }
+                else if (kule.Retning == 2)
+                {
+                    kule.TegnHøyre(e.Graphics);
+                }
+                else if (kule.Retning == 3)
+                {
+                    kule.TegnVenstre(e.Graphics);
+                }
+                else if (kule.Retning == 4)
+                {
+                    kule.TegnNed(e.Graphics);
+                }
             }
         }
 
